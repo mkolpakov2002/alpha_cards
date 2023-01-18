@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.alpha.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_permissionLocationFragment"
+            app:destination="@id/permissionLocationFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_permissionCameraFragment"
+            app:destination="@id/permissionCameraFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_notifications"
+            app:destination="@id/navigation_notifications" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.alpha.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_permissionLocationFragment"
+            app:destination="@id/permissionLocationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.alpha.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_navigation_notifications_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_notifications_to_permissionLocationFragment"
+            app:destination="@id/permissionLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/permissionLocationFragment"
+        android:name="com.example.alpha.ui.permission_location.PermissionLocationFragment"
+        android:label="fragment_permission_location"
+        tools:layout="@layout/fragment_permission_location" >
+        <action
+            android:id="@+id/action_permissionLocationFragment_to_permissionCameraFragment"
+            app:destination="@id/permissionCameraFragment" />
+        <action
+            android:id="@+id/action_permissionLocationFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_permissionLocationFragment_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
+        <action
+            android:id="@+id/action_permissionLocationFragment_to_navigation_notifications"
+            app:destination="@id/navigation_notifications" />
+    </fragment>
+    <fragment
+        android:id="@+id/permissionCameraFragment"
+        android:name="com.example.alpha.ui.permission_camera.PermissionCameraFragment"
+        android:label="fragment_permission_camera"
+        tools:layout="@layout/fragment_permission_camera" >
+        <action
+            android:id="@+id/action_permissionCameraFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+</navigation>
