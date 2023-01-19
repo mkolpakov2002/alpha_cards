@@ -76,4 +76,9 @@
             android:id="@+id/action_permissionCameraFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.example.alpha.SplashActivity"
+        android:label="activity_splash"
+        tools:layout="@layout/activity_splash" />
 </navigation>

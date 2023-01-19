@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="staticBackgroundColorAccent" format="reference">
+    </attr>
+    <attr name="staticBackgroundColorDark" format="reference|string|integer|boolean|color|float|dimension|fraction">
+    </attr>
+    <attr name="staticBackgroundColorLight" format="reference|string|integer|boolean|color|float|dimension|fraction">
+    </attr>
+    <attr name="staticBackgroundColorPrimaryDark" format="reference">
+    </attr>
+    <attr name="staticBackgroundColorPrimaryLight" format="reference">
+    </attr>
+    <attr name="staticBackgroundColorQuaternaryDark" format="reference">
+    </attr>
+    <attr name="staticBackgroundColorQuaternaryLight" format="reference">
+    </attr>
+    <attr name="staticBackgroundColorSecondaryDark" format="reference">
+    </attr>
+    <attr name="staticBackgroundColorSecondaryLight" format="reference">
+    </attr>
+    <attr name="staticBackgroundColorTertiaryDark" format="reference">
+    </attr>
+    <attr name="staticBackgroundColorTertiaryLight" format="reference">
+    </attr>
+    <attr name="staticBackgroundGradientPriorityPass" format="reference">
+    </attr>
+    <attr name="staticBorderColorAccent" format="reference">
+    </attr>
+    <attr name="staticCorpbackgroundColorNeutral" format="reference">
+    </attr>
+    <attr name="staticCorpbackgroundColorPrimary" format="reference">
+    </attr>
+    <attr name="staticCorpbackgroundColorSecondary" format="reference">
+    </attr>
+    <attr name="staticCorpbackgroundColorTertiary" format="reference">
+    </attr>
+    <attr name="staticGraphicColorAccent" format="reference">
+    </attr>
+    <attr name="staticGraphicColorAmethyst" format="reference">
+    </attr>
+    <attr name="staticGraphicColorBlackberry" format="reference">
+    </attr>
+    <attr name="staticGraphicColorBlueChill" format="reference">
+    </attr>
+    <attr name="staticGraphicColorBlueMaya" format="reference">
+    </attr>
+    <attr name="staticGraphicColorBlueMoody" format="reference">
+    </attr>
+    <attr name="staticGraphicColorBlueSteel" format="reference">
+    </attr>
+    <attr name="staticGraphicColorBotticelli" format="reference">
+    </attr>
+    <attr name="staticGraphicColorBoulder" format="reference">
+    </attr>
+    <attr name="staticGraphicColorBrinkPink" format="reference">
+    </attr>
+    <attr name="staticGraphicColorBurntSienna" format="reference">
+    </attr>
+    <attr name="staticGraphicColorCarrot" format="reference">
+    </attr>
+    <attr name="staticGraphicColorChatelle" format="reference">
+    </attr>
+    <attr name="staticGraphicColorChathamsBlue" format="reference">
+    </attr>
+    <attr name="staticGraphicColorChick" format="reference">
+    </attr>
+    <attr name="staticGraphicColorCrete" format="reference">
+    </attr>
+    <attr name="staticGraphicColorCuriousBlue" format="reference">
+    </attr>
+    <attr name="staticGraphicColorCuriousBlueLight" format="reference">
+    </attr>
+    <attr name="staticGraphicColorDark" format="reference">
+    </attr>
+    <attr name="staticGraphicColorEasternBlue" format="reference">
+    </attr>
+    <attr name="staticGraphicColorFrenchLilac" format="reference">
+    </attr>
+    <attr name="staticGraphicColorFuelYellow" format="reference">
+    </attr>
+    <attr name="staticGraphicColorFunBlue" format="reference">
+    </attr>
+    <attr name="staticGraphicColorGallery" format="reference">
+    </attr>
+    <attr name="staticGraphicColorGreenJungle" format="reference">
+    </attr>
+    <attr name="staticGraphicColorHippieBlue" format="reference">
+    </attr>
+    <attr name="staticGraphicColorJaffa" format="reference">
+    </attr>
+    <attr name="staticGraphicColorJaffaLight" format="reference">
+    </attr>
+    <attr name="staticGraphicColorJava" format="reference">
+    </attr>
+    <attr name="staticGraphicColorJungleGreen" format="reference">
+    </attr>
+    <attr name="staticGraphicColorLavender" format="reference">
+    </attr>
+    <attr name="staticGraphicColorLight" format="reference">
+    </attr>
+    <attr name="staticGraphicColorMantis" format="reference">
+    </attr>
+    <attr name="staticGraphicColorMatisse" format="reference">
+    </attr>
+    <attr name="staticGraphicColorMilanoRed" format="reference">
+    </attr>
+    <attr name="staticGraphicColorMirage" format="reference">
+    </attr>
+    <attr name="staticGraphicColorMoonRaker" format="reference">
+    </attr>
+    <attr name="staticGraphicColorMossGreen" format="reference">
+    </attr>
+    <attr name="staticGraphicColorNevada" format="reference">
+    </attr>
+    <attr name="staticGraphicColorOlive" format="reference">
+    </attr>
+    <attr name="staticGraphicColorOlivine" format="reference">
+    </attr>
+    <attr name="staticGraphicColorPeach" format="reference">
+    </attr>
+    <attr name="staticGraphicColorPersimmon" format="reference">
+    </attr>
+    <attr name="staticGraphicColorPewter" format="reference">
+    </attr>
+    <attr name="staticGraphicColorPickledBluewood" format="reference">
+    </attr>
+    <attr name="staticGraphicColorPorsche" format="reference">
+    </attr>
+    <attr name="staticGraphicColorRaspberry" format="reference">
+    </attr>
+    <attr name="staticGraphicColorRedDamask" format="reference">
+    </attr>
+    <attr name="staticGraphicColorSaffron" format="reference">
+    </attr>
+    <attr name="staticGraphicColorSalomie" format="reference">
+    </attr>
+    <attr name="staticGraphicColorSand" format="reference">
+    </attr>
+    <attr name="staticGraphicColorSandyBrown" format="reference">
+    </attr>
+    <attr name="staticGraphicColorSeawater" format="reference">
+    </attr>
+    <attr name="staticGraphicColorSerenade" format="reference">
+    </attr>
+    <attr name="staticGraphicColorSky" format="reference">
+    </attr>
+    <attr name="staticGraphicColorSoftPeach" format="reference">
+    </attr>
+    <attr name="staticGraphicColorSolitude" format="reference">
+    </attr>
+    <attr name="staticGraphicColorStrawberry" format="reference">
+    </attr>
+    <attr name="staticGraphicColorSundust" format="reference">
+    </attr>
+    <attr name="staticGraphicColorTurkishRose" format="reference">
+    </attr>
+    <attr name="staticGraphicColorTurquoiseBlue" format="reference">
+    </attr>
+    <attr name="staticGraphicColorValencia" format="reference">
+    </attr>
+    <attr name="staticGraphicColorWaikawaGray" format="reference">
+    </attr>
+    <attr name="staticGraphicColorWhisper" format="reference">
+    </attr>
+    <attr name="staticGraphicColorZanah" format="reference">
+    </attr>
+    <attr name="staticLocalColorLightBlue" format="reference">
+    </attr>
+    <attr name="staticOverlayColorBlackHigh" format="reference">
+    </attr>
+    <attr name="staticOverlayColorBlackLow" format="reference">
+    </attr>
+    <attr name="staticOverlayColorBlackNormal" format="reference">
+    </attr>
+    <attr name="staticOverlayColorBlackXhigh" format="reference">
+    </attr>
+    <attr name="staticOverlayColorBlackXlow" format="reference">
+    </attr>
+    <attr name="staticOverlayColorIndigoHigh" format="reference">
+    </attr>
+    <attr name="staticOverlayColorIndigoLow" format="reference">
+    </attr>
+    <attr name="staticOverlayColorIndigoNormal" format="reference">
+    </attr>
+    <attr name="staticOverlayColorIndigoXhigh" format="reference">
+    </attr>
+    <attr name="staticOverlayColorIndigoXlow" format="reference">
+    </attr>
+    <attr name="staticOverlayColorWhiteHigh" format="reference">
+    </attr>
+    <attr name="staticOverlayColorWhiteLow" format="reference">
+    </attr>
+    <attr name="staticOverlayColorWhiteNormal" format="reference">
+    </attr>
+    <attr name="staticOverlayColorWhiteXhigh" format="reference">
+    </attr>
+    <attr name="staticOverlayColorWhiteXlow" format="reference">
+    </attr>
+    <attr name="staticStatusColorBlue" format="reference">
+    </attr>
+    <attr name="staticStatusColorGreen" format="reference">
+    </attr>
+    <attr name="staticStatusColorGrey" format="reference">
+    </attr>
+    <attr name="staticStatusColorOrange" format="reference">
+    </attr>
+    <attr name="staticStatusColorPurple" format="reference">
+    </attr>
+    <attr name="staticStatusColorRed" format="reference">
+    </attr>
+    <attr name="staticStatusColorTeal" format="reference">
+    </attr>
+    <attr name="staticTextColorAccent" format="reference">
+    </attr>
+    <attr name="staticTextColorPrimaryDark" format="reference">
+    </attr>
+    <attr name="staticTextColorPrimaryLight" format="reference">
+    </attr>
+    <attr name="staticTextColorSecondaryDark" format="reference">
+    </attr>
+    <attr name="staticTextColorSecondaryLight" format="reference">
+    </attr>
+    <attr name="staticTextColorTertiaryDark" format="reference">
+    </attr>
+    <attr name="staticTextColorTertiaryLight" format="reference">
+    </attr>
+    <attr name="staticTransparentColorNulled" format="reference">
+    </attr>
+    <attr name="staticTransparentColorPrimaryDark" format="reference">
+    </attr>
+    <attr name="staticTransparentColorPrimaryLight" format="reference">
+    </attr>
+    <attr name="staticTransparentColorQuaternaryDark" format="reference">
+    </attr>
+    <attr name="staticTransparentColorQuaternaryLight" format="reference">
+    </attr>
+    <attr name="staticTransparentColorQuinaryDark" format="reference">
+    </attr>
+    <attr name="staticTransparentColorQuinaryLight" format="reference">
+    </attr>
+    <attr name="staticTransparentColorSecondaryDark" format="reference">
+    </attr>
+    <attr name="staticTransparentColorSecondaryLight" format="reference">
+    </attr>
+    <attr name="staticTransparentColorSenaryDark" format="reference">
+    </attr>
+    <attr name="staticTransparentColorSenaryLight" format="reference">
+    </attr>
+    <attr name="staticTransparentColorTertiaryDark" format="reference">
+    </attr>
+    <attr name="staticTransparentColorTertiaryLight" format="reference">
+    </attr>
+
+
+
+
+
+
+
+
+
+    <attr name="textColorAccent" format="reference">
+    </attr>
+    <attr name="textColorAlertDialogListItem" format="reference|color">
+    </attr>
+    <attr name="textColorAttention" format="reference">
+    </attr>
+    <attr name="textColorDisabled" format="reference">
+    </attr>
+    <attr name="textColorDisabledInverted" format="reference">
+    </attr>
+    <attr name="textColorLink" format="reference">
+    </attr>
+    <attr name="textColorNegative" format="reference">
+    </attr>
+    <attr name="textColorPositive" format="reference">
+    </attr>
+    <attr name="textColorPrimary" format="reference">
+    </attr>
+    <attr name="textColorPrimaryInverted" format="reference">
+    </attr>
+    <attr name="textColorSearchUrl" format="reference|color">
+    </attr>
+    <attr name="textColorSecondary" format="reference">
+    </attr>
+    <attr name="textColorSecondaryInverted" format="reference">
+    </attr>
+    <attr name="textColorTertiary" format="reference">
+    </attr>
+    <attr name="textColorTertiaryInverted" format="reference">
+    </attr>
+    <attr name="textColorToolbar" format="color">
+    </attr>
+    <attr name="textEndPadding" format="dimension">
+    </attr>
+    <attr name="textInputLayoutFocusedRectEnabled" format="boolean">
+    </attr>
+    <attr name="textInputStyle" format="reference">
+    </attr>
+    <attr name="textLocale" format="string">
+    </attr>
+    <attr name="textStartPadding" format="dimension">
+    </attr>
+    <attr name="textStyleAccentCaps" format="reference">
+    </attr>
+    <attr name="textStyleAccentComponent" format="reference">
+    </attr>
+    <attr name="textStyleAccentPrimaryLarge" format="reference">
+    </attr>
+    <attr name="textStyleAccentPrimaryMedium" format="reference">
+    </attr>
+    <attr name="textStyleAccentPrimarySmall" format="reference">
+    </attr>
+    <attr name="textStyleAccentSecondaryLarge" format="reference">
+    </attr>
+    <attr name="textStyleAccentSecondaryMedium" format="reference">
+    </attr>
+    <attr name="textStyleAccentSecondarySmall" format="reference">
+    </attr>
+    <attr name="textStyleAccentTagline" format="reference">
+    </attr>
+    <attr name="textStyleActionCaps" format="reference">
+    </attr>
+    <attr name="textStyleActionComponent" format="reference">
+    </attr>
+    <attr name="textStyleActionPrimaryLarge" format="reference">
+    </attr>
+    <attr name="textStyleActionPrimaryMedium" format="reference">
+    </attr>
+    <attr name="textStyleActionPrimarySmall" format="reference">
+    </attr>
+    <attr name="textStyleActionSecondaryLarge" format="reference">
+    </attr>
+    <attr name="textStyleActionSecondaryMedium" format="reference">
+    </attr>
+    <attr name="textStyleActionSecondarySmall" format="reference">
+    </attr>
+    <attr name="textStyleActionTagline" format="reference">
+    </attr>
+    <attr name="textStyleCaption" format="reference">
+    </attr>
+    <attr name="textStyleHeading1" format="reference">
+    </attr>
+    <attr name="textStyleHeading2" format="reference">
+    </attr>
+    <attr name="textStyleHeading3" format="reference">
+    </attr>
+    <attr name="textStyleHeadlineLarge" format="reference">
+    </attr>
+    <attr name="textStyleHeadlineMedium" format="reference">
+    </attr>
+    <attr name="textStyleHeadlineSmall" format="reference">
+    </attr>
+    <attr name="textStyleHeadlineXLarge" format="reference">
+    </attr>
+    <attr name="textStyleHeadlineXSmall" format="reference">
+    </attr>
+    <attr name="textStyleLegacyLarge" format="reference">
+    </attr>
+    <attr name="textStyleLegacyMedium" format="reference">
+    </attr>
+    <attr name="textStyleLegacySmall" format="reference">
+    </attr>
+    <attr name="textStyleLegacyXLarge" format="reference">
+    </attr>
+    <attr name="textStyleLegacyXSmall" format="reference">
+    </attr>
+    <attr name="textStyleParagraphCaps" format="reference">
+    </attr>
+    <attr name="textStyleParagraphComponent" format="reference">
+    </attr>
+    <attr name="textStyleParagraphPrimaryLarge" format="reference">
+    </attr>
+    <attr name="textStyleParagraphPrimaryMedium" format="reference">
+    </attr>
+    <attr name="textStyleParagraphPrimarySmall" format="reference">
+    </attr>
+    <attr name="textStyleParagraphSecondaryLarge" format="reference">
+    </attr>
+    <attr name="textStyleParagraphSecondaryMedium" format="reference">
+    </attr>
+    <attr name="textStyleParagraphSecondarySmall" format="reference">
+    </attr>
+    <attr name="textStyleParagraphTagline" format="reference">
+    </attr>
+    <attr name="textStylePrimaryComponentsBold" format="reference">
+    </attr>
+    <attr name="textStylePrimaryComponentsMedium" format="reference">
+    </attr>
+    <attr name="textStylePrimaryComponentsRegular" format="reference">
+    </attr>
+    <attr name="textStylePrimaryParagraphBold" format="reference">
+    </attr>
+    <attr name="textStylePrimaryParagraphMedium" format="reference">
+    </attr>
+    <attr name="textStylePrimaryParagraphRegular" format="reference">
+    </attr>
+    <attr name="textStylePromoLarge" format="reference">
+    </attr>
+    <attr name="textStylePromoMedium" format="reference">
+    </attr>
+    <attr name="textStylePromoSmall" format="reference">
+    </attr>
+    <attr name="textStylePromoXLarge" format="reference">
+    </attr>
+    <attr name="textStylePromoXSmall" format="reference">
+    </attr>
+    <attr name="textStyleSecondaryBold" format="reference">
+    </attr>
+    <attr name="textStyleSecondaryMedium" format="reference">
+    </attr>
+    <attr name="textStyleSecondaryRegular" format="reference">
+    </attr>
+    <attr name="textStyleTertiary" format="reference">
+    </attr>
+
+
+
+    <attr name="graphicColorAccent" format="reference">
+    </attr>
+    <attr name="graphicColorAttention" format="reference">
+    </attr>
+    <attr name="graphicColorLink" format="reference">
+    </attr>
+    <attr name="graphicColorNegative" format="reference">
+    </attr>
+    <attr name="graphicColorPositive" format="reference">
+    </attr>
+    <attr name="graphicColorPrimary" format="reference">
+    </attr>
+    <attr name="graphicColorPrimaryInverted" format="reference">
+    </attr>
+    <attr name="graphicColorQuaternary" format="reference">
+    </attr>
+    <attr name="graphicColorQuaternaryInverted" format="reference">
+    </attr>
+    <attr name="graphicColorSecondary" format="reference">
+    </attr>
+    <attr name="graphicColorSecondaryInverted" format="reference">
+    </attr>
+    <attr name="graphicColorTertiary" format="reference">
+    </attr>
+    <attr name="graphicColorTertiaryInverted" format="reference">
+    </attr>
+
+    <attr name="borderColorAccent" format="reference">
+    </attr>
+    <attr name="borderColorKey" format="reference">
+    </attr>
+    <attr name="borderColorKeyInverted" format="reference">
+    </attr>
+    <attr name="borderColorLink" format="reference">
+    </attr>
+    <attr name="borderColorPrimary" format="reference">
+    </attr>
+    <attr name="borderColorPrimaryInverted" format="reference">
+    </attr>
+    <attr name="borderColorSecondary" format="reference">
+    </attr>
+    <attr name="borderColorSecondaryInverted" format="reference">
+    </attr>
+    <attr name="borderColorTertiary" format="reference">
+    </attr>
+    <attr name="borderColorTertiaryInverted" format="reference">
+    </attr>
+    <attr name="borderColorUnderline" format="reference">
+    </attr>
+    <attr name="borderColorUnderlineInverted" format="reference">
+    </attr>
+    <attr name="borderWidth" format="dimension">
+    </attr>
+    <attr name="border_color" format="color">
+    </attr>
+    <attr name="border_enabled" format="boolean">
+    </attr>
+
+
+
+    <attr name="backgroundColorAccent" format="reference">
+    </attr>
+    <attr name="backgroundColorAttentionMuted" format="reference">
+    </attr>
+    <attr name="backgroundColorInfo" format="reference">
+    </attr>
+    <attr name="backgroundColorNegativeMuted" format="reference">
+    </attr>
+    <attr name="backgroundColorOpaque" format="reference">
+    </attr>
+    <attr name="backgroundColorOverlay" format="reference">
+    </attr>
+    <attr name="backgroundColorPositiveMuted" format="reference">
+    </attr>
+    <attr name="backgroundColorPrimary" format="reference">
+    </attr>
+    <attr name="backgroundColorPrimaryInverted" format="reference">
+    </attr>
+    <attr name="backgroundColorQuaternary" format="reference">
+    </attr>
+    <attr name="backgroundColorQuaternaryInverted" format="reference">
+    </attr>
+    <attr name="backgroundColorSecondary" format="reference">
+    </attr>
+    <attr name="backgroundColorSecondaryInverted" format="reference">
+    </attr>
+    <attr name="backgroundColorSecondaryToolbar" format="color">
+    </attr>
+    <attr name="backgroundColorTertiary" format="reference">
+    </attr>
+    <attr name="backgroundColorTertiaryInverted" format="reference">
+    </attr>
+
+
+
+    <attr name="transparentColorNulled" format="reference">
+    </attr>
+    <attr name="transparentColorPrimaryDark" format="reference">
+    </attr>
+    <attr name="transparentColorPrimaryLight" format="reference">
+    </attr>
+    <attr name="transparentColorQuaternaryDark" format="reference">
+    </attr>
+    <attr name="transparentColorQuaternaryLight" format="reference">
+    </attr>
+    <attr name="transparentColorQuinaryDark" format="reference">
+    </attr>
+    <attr name="transparentColorQuinaryLight" format="reference">
+    </attr>
+    <attr name="transparentColorSecondaryDark" format="reference">
+    </attr>
+    <attr name="transparentColorSecondaryLight" format="reference">
+    </attr>
+    <attr name="transparentColorSenaryDark" format="reference">
+    </attr>
+    <attr name="transparentColorSenaryLight" format="reference">
+    </attr>
+    <attr name="transparentColorTertiaryDark" format="reference">
+    </attr>
+    <attr name="transparentColorTertiaryLight" format="reference">
+    </attr>
+
+
+    <attr name="specialBackgroundColorComponent" format="reference">
+    </attr>
+    <attr name="specialBackgroundColorComponentInverted" format="reference">
+    </attr>
+    <attr name="specialBackgroundColorNulled" format="reference">
+    </attr>
+    <attr name="specialBackgroundColorOverlayFallback" format="reference">
+    </attr>
+    <attr name="specialBackgroundColorPrimaryGrouped" format="reference">
+    </attr>
+    <attr name="specialBackgroundColorSecondaryGrouped" format="reference">
+    </attr>
+    <attr name="specialBackgroundColorTertiaryGrouped" format="reference">
+    </attr>
+
+
+    <attr name="ab_button_background_checked" format="color">
+    </attr>
+    <attr name="ab_button_background_disabled" format="color">
+    </attr>
+    <attr name="ab_button_background_enabled" format="color">
+    </attr>
+    <attr name="ab_button_background_pressed" format="color">
+    </attr>
+
+
+    <attr name="ab_icon" format="reference">
+    </attr>
+    <attr name="ab_icon_color_checked" format="color">
+    </attr>
+    <attr name="ab_icon_color_disabled" format="color">
+    </attr>
+    <attr name="ab_icon_color_enabled" format="color">
+    </attr>
+    <attr name="ab_icon_color_pressed" format="color">
+    </attr>
+    <attr name="ab_label" format="string">
+    </attr>
+    <attr name="ab_label_color_disabled" format="color">
+    </attr>
+    <attr name="ab_label_color_enabled" format="color">
+    </attr>
+
+    <attr name="ab_custom_color" format="color">
+    </attr>
+
+
+    <attr name="actionButtonStyle" format="reference">
+    </attr>
+    <attr name="actionButtonStyleCustom" format="reference">
+    </attr>
+    <attr name="actionButtonStylePrimary" format="reference">
+    </attr>
+    <attr name="actionButtonStyleSecondary" format="reference">
+    </attr>
+    <attr name="actionButtonStyleTertiary" format="reference">
+    </attr>
+    <attr name="actionButtonStyleTransparent" format="reference">
+    </attr>
+
+
+    <attr name="buttonStyle" format="reference">
+    </attr>
+    <attr name="buttonStyleInvertedDeepLink" format="reference">
+    </attr>
+    <attr name="buttonStylePrimary" format="reference">
+    </attr>
+    <attr name="buttonStyleSecondary" format="reference">
+    </attr>
+    <attr name="buttonStyleSmall" format="reference">
+    </attr>
+    <attr name="buttonStyleStaticDeepLink" format="reference">
+    </attr>
+    <attr name="buttonStyleTertiary" format="reference">
+    </attr>
+
+    <attr name="backgroundColorToolbar" format="color">
+    </attr>
+
+
+</resources>

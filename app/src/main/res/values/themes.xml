@@ -13,4 +13,1848 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="RobotoMedium" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="BlueTheme" parent="@style/RedTheme">
+        <item name="actionModeBackground">?attr/backgroundColorPrimaryInverted</item>
+        <item name="actionModeCloseDrawable">@drawable/icon_close_m_white</item>
+        <!--        <item name="srcOverlay">@drawable/screen_blue_bg_overlay</item>-->
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="SplashActivity" parent="@style/SplashActivityBase">
+        <item name="android:statusBarColor">?attr/backgroundColorAccent</item>
+    </style>
+    <style name="WhiteAlfaTheme" parent="@style/BaseAlfaTheme">
+        <item name="android:statusBarColor">?attr/backgroundColorQuaternary</item>
+        <item name="android:navigationBarColor">?attr/backgroundColorQuaternary</item>
+    </style>
+    <style name="SplashActivityBase" parent="@style/WhiteAlfaTheme">
+        <item name="android:windowBackground">@drawable/splash_bg</item>
+        <item name="android:windowDisablePreview">false</item>
+        <item name="android:navigationBarColor">?attr/backgroundColorAccent</item>
+    </style>
+
+    <style name="BaseButton" parent="@style/Base.Widget.AppCompat.Button">
+        <item name="android:textAppearance">@style/RobotoMedium</item>
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="WhiteButton" parent="@style/BaseButton">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:background">@drawable/bg_white_button</item>
+    </style>
+
+    <style name="BaseAlfaTheme" parent="@style/Theme.Base.Alfa">
+        <item name="android:itemBackground">?attr/specialBackgroundColorSecondaryGrouped</item>
+        <item name="android:statusBarColor">#08182a</item>
+        <item name="android:datePickerDialogTheme">@style/DatePickerDialogTheme</item>
+        <item name="actionBarTheme">@style/DynamicToolbarStyleActionMode</item>
+        <item name="actionButtonStyleCustom">@style/ActionButtonCustom</item>
+        <item name="actionButtonStylePrimary">@style/ActionButtonPrimary</item>
+        <item name="actionButtonStyleSecondary">@style/ActionButtonSecondary</item>
+        <item name="actionButtonStyleTertiary">@style/ActionButtonTertiary</item>
+        <item name="actionButtonStyleTransparent">@style/ActionButtonTransparent</item>
+        <item name="actionModeBackground">?attr/backgroundColorToolbar</item>
+        <item name="actionModeCloseButtonStyle">@style/AppbarCloseButton</item>
+        <!--        <item name="actionModeCloseDrawable">@drawable/glyph_material_cross_m</item>-->
+        <!--        <item name="actionModeStyle">@style/ActionModeStyle</item>-->
+        <item name="alertDialogStyle">@style/AlfaDialog</item>
+        <item name="alertDialogTheme">@style/AlfaDialog</item>
+        <item name="backgroundColorSecondaryToolbar">?attr/backgroundColorSecondary</item>
+        <item name="backgroundColorToolbar">?attr/backgroundColorPrimary</item>
+        <item name="buttonStyleInvertedDeepLink">@style/ButtonInvertedDeepLink</item>
+        <item name="buttonStylePrimary">@style/ButtonPrimary</item>
+        <item name="buttonStyleSecondary">@style/ButtonSecondary</item>
+        <item name="buttonStyleStaticDeepLink">@style/ButtonStaticDeepLink</item>
+        <item name="buttonStyleTertiary">@style/ButtonTertiary</item>
+<!--        <item name="cellHeight">72dp</item>-->
+        <!--        <item name="chipGroupStyle">@style/Element.ChipGroup</item>-->
+        <!--        <item name="chipStyle">@style/Element.Chip</item>-->
+        <item name="colorAccent">?attr/backgroundColorAccent</item>
+        <item name="colorControlHighlight">@color/color_control_highlight</item>
+        <item name="colorPrimaryDark">?attr/textColorNegative</item>
+        <item name="colorSwitchThumbNormal">?attr/graphicColorSecondary</item>
+<!--        <item name="fitSystemWindows">true</item>-->
+<!--        <item name="infoAppearance">@style/TextSecondaryDark</item>-->
+<!--        <item name="progressBarBackground">?attr/backgroundColorOverlay</item>-->
+<!--        <item name="rippleColorPrimary">?attr/colorControlHighlight</item>-->
+        <item name="staticBackgroundColorDark">?attr/staticBackgroundColorPrimaryDark</item>
+        <item name="staticBackgroundColorLight">?attr/staticBackgroundColorPrimaryLight</item>
+<!--        <item name="subInfoAppearance">@style/TextSecondaryDark_60</item>-->
+<!--        <item name="tabBarStyle">@style/ScrollableTabBarStyle</item>-->
+        <item name="textColorToolbar">?attr/textColorPrimary</item>
+<!--        <item name="titleAppearance">@style/TextView.Regular.DarkIndigo.20dp</item>-->
+<!--        <item name="toolbarIconTint">?attr/graphicColorPrimary</item>-->
+        <item name="toolbarStyle">@style/DynamicToolbarStyle</item>
+<!--        <item name="toolbarTransparentWhiteOverlayStyle">-->
+<!--            @style/DynamicTransparentWhiteOverlayToolbarStyle-->
+<!--        </item>-->
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppbarCloseButton" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
+        <item name="android:tint">?attr/graphicColorPrimary</item>
+    </style>
+
+    <style name="ActionButtonCustom">
+        <item name="ab_button_background_disabled">?attr/textColorDisabled</item>
+        <item name="ab_custom_color">?attr/graphicColorAccent</item>
+        <item name="ab_icon_color_disabled">?attr/textColorDisabled</item>
+        <item name="ab_label_color_disabled">?attr/textColorDisabled</item>
+    </style>
+
+    <style name="ActionButtonPrimary">
+        <item name="ab_button_background_disabled">?attr/textColorDisabled</item>
+        <item name="ab_button_background_enabled">?attr/backgroundColorSecondaryInverted</item>
+        <item name="ab_button_background_pressed">?attr/backgroundColorPrimaryInverted</item>
+        <item name="ab_icon_color_disabled">?attr/textColorDisabled</item>
+        <item name="ab_icon_color_enabled">?attr/graphicColorPrimaryInverted</item>
+        <item name="ab_icon_color_pressed">?attr/graphicColorPrimaryInverted</item>
+        <item name="ab_label_color_disabled">?attr/textColorDisabled</item>
+        <item name="ab_label_color_enabled">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="ActionButtonPrimary.Old" parent="@style/ActionButtonPrimary">
+        <item name="ab_button_background_disabled">?attr/textColorDisabled</item>
+        <item name="ab_button_background_enabled">@color/red_button_bg_selector</item>
+        <item name="ab_button_background_pressed">?attr/backgroundColorPrimaryInverted</item>
+        <item name="ab_icon_color_disabled">?attr/textColorDisabled</item>
+        <item name="ab_icon_color_enabled">?attr/graphicColorPrimaryInverted</item>
+        <item name="ab_icon_color_pressed">?attr/graphicColorPrimaryInverted</item>
+        <item name="ab_label_color_disabled">?attr/textColorDisabled</item>
+        <item name="ab_label_color_enabled">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="ActionButtonSecondary">
+        <item name="ab_button_background_disabled">?attr/textColorDisabled</item>
+        <item name="ab_button_background_enabled">?attr/backgroundColorSecondary</item>
+        <item name="ab_button_background_pressed">?attr/backgroundColorQuaternary</item>
+        <item name="ab_icon_color_disabled">?attr/textColorDisabled</item>
+        <item name="ab_icon_color_enabled">?attr/graphicColorPrimary</item>
+        <item name="ab_icon_color_pressed">?attr/graphicColorPrimary</item>
+        <item name="ab_label_color_disabled">?attr/textColorDisabled</item>
+        <item name="ab_label_color_enabled">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="ActionButtonTertiary">
+        <item name="ab_button_background_disabled">@color/transparent</item>
+        <item name="ab_button_background_enabled">@color/transparent</item>
+        <item name="ab_button_background_pressed">?attr/backgroundColorQuaternary</item>
+        <item name="ab_icon_color_disabled">?attr/textColorDisabled</item>
+        <item name="ab_icon_color_enabled">?attr/graphicColorPrimary</item>
+        <item name="ab_icon_color_pressed">?attr/graphicColorPrimary</item>
+    </style>
+
+    <style name="ActionButtonTransparent">
+        <item name="ab_button_background_checked">?attr/staticBackgroundColorLight</item>
+        <item name="ab_button_background_enabled">?attr/staticBackgroundColorDark</item>
+        <item name="ab_button_background_pressed">?attr/staticBackgroundColorDark</item>
+<!--        <item name="ab_checkable">true</item>-->
+        <item name="ab_icon_color_checked">?attr/staticGraphicColorDark</item>
+        <item name="ab_icon_color_enabled">?attr/staticGraphicColorLight</item>
+        <item name="ab_icon_color_pressed">?attr/staticGraphicColorLight</item>
+    </style>
+
+    <style name="DynamicToolbarStyleActionMode">
+        <item name="titleTextStyle">?attr/textStylePrimaryComponentsMedium</item>
+    </style>
+
+    <style name="AlfaDialog" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColorPrimary">?attr/textColorSecondary</item>
+        <item name="android:textColorSecondary">?attr/textColorSecondary</item>
+        <item name="android:windowTitleStyle">@style/DialogTitleTextStyle</item>
+        <item name="android:background">?attr/specialBackgroundColorSecondaryGrouped</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButtonStyle</item>
+        <item name="colorAccent">?attr/textColorNegative</item>
+    </style>
+
+    <style name="DialogButtonStyle" parent="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="DialogTitleTextStyle">
+        <item name="android:textAppearance">@style/RobotoMedium</item>
+        <item name="android:textSize">@dimen/font_size_18dp</item>
+        <item name="android:textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="ButtonBase" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">?attr/textStylePrimaryComponentsMedium</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="cornerRadius">12dp</item>
+<!--        <item name="rippleColor">?attr/rippleColorPrimary</item>-->
+    </style>
+
+    <style name="ButtonBaseDeepLink" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">?attr/textStyleSecondaryMedium</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">@dimen/container_spacing_horizontal</item>
+        <item name="android:paddingEnd">@dimen/container_spacing_horizontal</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="cornerRadius">12dp</item>
+<!--        <item name="rippleColor">?attr/rippleColorPrimary</item>-->
+    </style>
+
+    <style name="ButtonInvertedDeepLink" parent="@style/ButtonBaseDeepLink">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="backgroundTint">?attr/backgroundColorSecondary</item>
+    </style>
+
+    <style name="ButtonPrimary" parent="@style/ButtonBase">
+        <item name="android:textColor">@color/button_text_color_primary_selector</item>
+        <item name="backgroundTint">?attr/backgroundColorSecondaryInverted</item>
+    </style>
+
+    <style name="ButtonSecondary" parent="@style/ButtonBase">
+        <item name="android:textColor">@color/button_text_color_secondary_selector</item>
+        <item name="backgroundTint">?attr/backgroundColorSecondary</item>
+    </style>
+
+    <style name="ButtonStaticDeepLink" parent="@style/ButtonBaseDeepLink">
+        <item name="android:textColor">?attr/staticTextColorPrimaryLight</item>
+        <item name="backgroundTint">?attr/staticBackgroundColorAccent</item>
+    </style>
+
+    <style name="ButtonTertiary" parent="@style/ButtonBase">
+        <item name="android:textColor">@color/button_text_color_secondary_selector</item>
+        <item name="backgroundTint">?attr/specialBackgroundColorNulled</item>
+    </style>
+
+    <style name="DatePickerDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:textColorPrimary">?attr/textColorPrimary</item>
+        <item name="android:textColorSecondary">?attr/textColorSecondary</item>
+        <item name="android:textColorPrimaryInverse">?attr/textColorPrimaryInverted</item>
+        <item name="android:textColorSecondaryInverse">?attr/textColorSecondaryInverted</item>
+        <!--        <item name="android:windowBackground">@drawable/date_picker_dialog_background</item>-->
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="android:headerBackground">?attr/backgroundColorSecondaryInverted</item>
+        <item name="android:colorControlActivated">?attr/backgroundColorAccent</item>
+        <item name="android:colorAccent">?attr/backgroundColorSecondaryInverted</item>
+        <item name="android:dayOfWeekBackground">?attr/backgroundColorSecondaryInverted</item>
+        <item name="android:yearListSelectorColor">?attr/textColorPrimary</item>
+    </style>
+
+
+    <style name="TextSecondaryDark" parent="@style/BaseTextView">
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+        <item name="android:textColor">?attr/textColorPrimary</item>
+    </style>
+
+
+    <style name="TextSecondaryDark_60" parent="@style/BaseTextView">
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+        <item name="android:textColor">?attr/textColorSecondary</item>
+    </style>
+
+
+    <style name="DynamicToolbarStyle" parent="@style/BaseDynamicToolbarStyle">
+        <item name="android:background">?attr/backgroundColorToolbar</item>
+<!--        <item name="iconTintColorToolbar">?attr/graphicColorPrimary</item>-->
+        <item name="navigationContentDescription">"@string/toolbar_back_content_description"</item>
+        <item name="navigationIcon">@drawable/glyph_material_arrow_back_m</item>
+<!--        <item name="redesign_enabled">true</item>-->
+<!--        <item name="separator_enabled">true</item>-->
+<!--        <item name="subtitleTextColorToolbar">?attr/textColorSecondary</item>-->
+        <item name="textColorToolbar">?attr/textColorToolbar</item>
+    </style>
+
+
+    <style name="BaseDynamicToolbarStyle" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">56dp</item>
+    </style>
+
+    <style name="DynamicTransparentWhiteOverlayToolbarStyle" parent="@style/BaseDynamicToolbarStyle">
+        <item name="android:background">?attr/specialBackgroundColorNulled</item>
+<!--        <item name="iconTintColorToolbar">?attr/staticGraphicColorLight</item>-->
+        <item name="navigationIcon">@drawable/icon_back_m_white</item>
+<!--        <item name="redesign_enabled">true</item>-->
+<!--        <item name="separator_enabled">false</item>-->
+<!--        <item name="subtitleTextColorToolbar">?attr/staticTextColorSecondaryLight</item>-->
+        <item name="textColorToolbar">?attr/staticTextColorPrimaryLight</item>
+    </style>
+
+    <style name="ScrollableTabBarStyle" parent="@style/BaseScrollableTabBarStyle">
+<!--        <item name="redesign_enabled">true</item>-->
+    </style>
+
+    <style name="BaseScrollableTabBarStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+<!--        <item name="stbv_bottom_line_background_color">?attr/borderColorPrimary</item>-->
+<!--        <item name="stbv_bottom_line_background_height">1dp</item>-->
+        <item name="tabContentStart">@dimen/scrollable_tab_horizontal_offset</item>
+        <item name="tabIndicatorColor">?attr/borderColorAccent</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabMaxWidth">0dp</item>
+        <item name="tabPaddingEnd">0dp</item>
+        <item name="tabPaddingStart">0dp</item>
+    </style>
+
+    <style name="TextSecondaryLight_60" parent="@style/BaseTextView">
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+        <item name="android:textColor">?attr/textColorSecondaryInverted</item>
+    </style>
+
+    <style name="Toolbar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">56dp</item>
+    </style>
+
+    <style name="Toolbar.WithoutBack" parent="@style/Toolbar">
+        <item name="android:background">?attr/specialBackgroundColorNulled</item>
+        <item name="navigationIcon">@null</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="selectableItemBackground">?android:attr/selectableItemBackground</item>
+        <item name="selectableItemBackgroundBorderless">?android:attr/selectableItemBackground
+        </item>
+        <item name="subtitleTextAppearance">@style/TextSecondaryLight_60</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="titleTextAppearance">@style/TextView.Regular.White.18dp</item>
+    </style>
+
+    <style name="Toolbar.WithWhiteBack" parent="@style/Toolbar.WithoutBack">
+        <item name="android:background">#0b1f35</item>
+        <item name="navigationIcon">@drawable/icon_back_m_white</item>
+    </style>
+
+    <style name="BaseRedTheme" parent="@style/BaseAlfaTheme">
+        <item name="toolbarStyle">@style/Toolbar.WithWhiteBack</item>
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+    </style>
+
+    <style name="RedTheme" parent="@style/BaseRedTheme">
+        <item name="android:colorEdgeEffect">#4c4c4c</item>
+    </style>
+
+
+    <style name="Theme.AppCompat.NoActionBar" parent="@style/Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.AppCompat.Translucent" parent="@style/Theme.AppCompat">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="Theme.Base.Alfa" parent="@style/Theme.Base.AlfaNative">
+        <item name="textStyleAccentCaps">@style/TextStyle.AccentCaps</item>
+        <item name="textStyleAccentComponent">@style/TextStyle.AccentComponent</item>
+        <item name="textStyleAccentPrimaryLarge">@style/TextStyle.AccentPrimaryLarge</item>
+        <item name="textStyleAccentPrimaryMedium">@style/TextStyle.AccentPrimaryMedium</item>
+        <item name="textStyleAccentPrimarySmall">@style/TextStyle.AccentPrimarySmall</item>
+        <item name="textStyleAccentSecondaryLarge">@style/TextStyle.AccentSecondaryLarge</item>
+        <item name="textStyleAccentSecondaryMedium">@style/TextStyle.AccentSecondaryMedium</item>
+        <item name="textStyleAccentSecondarySmall">@style/TextStyle.AccentSecondarySmall</item>
+        <item name="textStyleAccentTagline">@style/TextStyle.AccentTagline</item>
+        <item name="textStyleActionCaps">@style/TextStyle.ActionCaps</item>
+        <item name="textStyleActionComponent">@style/TextStyle.ActionComponent</item>
+        <item name="textStyleActionPrimaryLarge">@style/TextStyle.ActionPrimaryLarge</item>
+        <item name="textStyleActionPrimaryMedium">@style/TextStyle.ActionPrimaryMedium</item>
+        <item name="textStyleActionPrimarySmall">@style/TextStyle.ActionPrimarySmall</item>
+        <item name="textStyleActionSecondaryLarge">@style/TextStyle.ActionSecondaryLarge</item>
+        <item name="textStyleActionSecondaryMedium">@style/TextStyle.ActionSecondaryMedium</item>
+        <item name="textStyleActionSecondarySmall">@style/TextStyle.ActionSecondarySmall</item>
+        <item name="textStyleActionTagline">@style/TextStyle.ActionTagline</item>
+        <item name="textStyleCaption">@style/TextStyle.Caption</item>
+        <item name="textStyleHeading1">@style/TextStyle.Heading1</item>
+        <item name="textStyleHeading2">@style/TextStyle.Heading2</item>
+        <item name="textStyleHeading3">@style/TextStyle.Heading3</item>
+        <item name="textStyleHeadlineLarge">@style/TextStyle.HeadlineLarge</item>
+        <item name="textStyleHeadlineMedium">@style/TextStyle.HeadlineMedium</item>
+        <item name="textStyleHeadlineSmall">@style/TextStyle.HeadlineSmall</item>
+        <item name="textStyleHeadlineXLarge">@style/TextStyle.HeadlineXLarge</item>
+        <item name="textStyleHeadlineXSmall">@style/TextStyle.HeadlineXSmall</item>
+        <item name="textStyleLegacyLarge">@style/TextStyle.LegacyLarge</item>
+        <item name="textStyleLegacyMedium">@style/TextStyle.LegacyMedium</item>
+        <item name="textStyleLegacySmall">@style/TextStyle.LegacySmall</item>
+        <item name="textStyleLegacyXLarge">@style/TextStyle.LegacyXLarge</item>
+        <item name="textStyleLegacyXSmall">@style/TextStyle.LegacyXSmall</item>
+        <item name="textStyleParagraphCaps">@style/TextStyle.ParagraphCaps</item>
+        <item name="textStyleParagraphComponent">@style/TextStyle.ParagraphComponent</item>
+        <item name="textStyleParagraphPrimaryLarge">@style/TextStyle.ParagraphPrimaryLarge</item>
+        <item name="textStyleParagraphPrimaryMedium">@style/TextStyle.ParagraphPrimaryMedium</item>
+        <item name="textStyleParagraphPrimarySmall">@style/TextStyle.ParagraphPrimarySmall</item>
+        <item name="textStyleParagraphSecondaryLarge">@style/TextStyle.ParagraphSecondaryLarge
+        </item>
+        <item name="textStyleParagraphSecondaryMedium">@style/TextStyle.ParagraphSecondaryMedium
+        </item>
+        <item name="textStyleParagraphSecondarySmall">@style/TextStyle.ParagraphSecondarySmall
+        </item>
+        <item name="textStyleParagraphTagline">@style/TextStyle.ParagraphTagline</item>
+        <item name="textStylePrimaryComponentsBold">@style/TextStyle.PrimaryComponents.Bold</item>
+        <item name="textStylePrimaryComponentsMedium">@style/TextStyle.PrimaryComponents.Medium
+        </item>
+        <item name="textStylePrimaryComponentsRegular">@style/TextStyle.PrimaryComponents.Regular
+        </item>
+        <item name="textStylePrimaryParagraphBold">@style/TextStyle.PrimaryParagraph.Bold</item>
+        <item name="textStylePrimaryParagraphMedium">@style/TextStyle.PrimaryParagraph.Medium</item>
+        <item name="textStylePrimaryParagraphRegular">@style/TextStyle.PrimaryParagraph.Regular
+        </item>
+        <item name="textStylePromoLarge">@style/TextStyle.PromoLarge</item>
+        <item name="textStylePromoMedium">@style/TextStyle.PromoMedium</item>
+        <item name="textStylePromoSmall">@style/TextStyle.PromoSmall</item>
+        <item name="textStylePromoXLarge">@style/TextStyle.PromoXLarge</item>
+        <item name="textStylePromoXSmall">@style/TextStyle.PromoXSmall</item>
+        <item name="textStyleSecondaryBold">@style/TextStyle.Secondary.Bold</item>
+        <item name="textStyleSecondaryMedium">@style/TextStyle.Secondary.Medium</item>
+        <item name="textStyleSecondaryRegular">@style/TextStyle.Secondary.Regular</item>
+        <item name="textStyleTertiary">@style/TextStyle.Tertiary</item>
+    </style>
+
+    <style name="Theme.Base.AlfaColor" parent="@style/Theme.Base.AlfaStaticColor">
+        <item name="backgroundColorAccent">@color/background_accent</item>
+        <item name="backgroundColorAttentionMuted">@color/background_attention_muted</item>
+        <item name="backgroundColorInfo">@color/background_info</item>
+        <item name="backgroundColorNegativeMuted">@color/background_negative_muted</item>
+        <item name="backgroundColorOpaque">@color/background_opaque</item>
+        <item name="backgroundColorOverlay">@color/background_overlay</item>
+        <item name="backgroundColorPositiveMuted">@color/background_positive_muted</item>
+        <item name="backgroundColorPrimary">@color/background_primary</item>
+        <item name="backgroundColorPrimaryInverted">@color/background_primary_inverted</item>
+        <item name="backgroundColorQuaternary">@color/background_quaternary</item>
+        <item name="backgroundColorQuaternaryInverted">@color/background_quaternary_inverted</item>
+        <item name="backgroundColorSecondary">@color/background_secondary</item>
+        <item name="backgroundColorSecondaryInverted">@color/background_secondary_inverted</item>
+        <item name="backgroundColorTertiary">@color/background_tertiary</item>
+        <item name="backgroundColorTertiaryInverted">@color/background_tertiary_inverted</item>
+        <item name="borderColorAccent">@color/border_accent</item>
+        <item name="borderColorKey">@color/border_key</item>
+        <item name="borderColorKeyInverted">@color/border_key_inverted</item>
+        <item name="borderColorLink">@color/border_link</item>
+        <item name="borderColorPrimary">@color/border_primary</item>
+        <item name="borderColorPrimaryInverted">@color/border_primary_inverted</item>
+        <item name="borderColorSecondary">@color/border_secondary</item>
+        <item name="borderColorSecondaryInverted">@color/border_secondary_inverted</item>
+        <item name="borderColorTertiary">@color/border_tertiary</item>
+        <item name="borderColorTertiaryInverted">@color/border_tertiary_inverted</item>
+        <item name="borderColorUnderline">@color/border_underline</item>
+        <item name="borderColorUnderlineInverted">@color/border_underline_inverted</item>
+        <item name="graphicColorAccent">@color/graphic_accent</item>
+        <item name="graphicColorAttention">@color/graphic_attention</item>
+        <item name="graphicColorLink">@color/graphic_link</item>
+        <item name="graphicColorNegative">@color/graphic_negative</item>
+        <item name="graphicColorPositive">@color/graphic_positive</item>
+        <item name="graphicColorPrimary">@color/graphic_primary</item>
+        <item name="graphicColorPrimaryInverted">@color/graphic_primary_inverted</item>
+        <item name="graphicColorQuaternary">@color/graphic_quaternary</item>
+        <item name="graphicColorQuaternaryInverted">@color/graphic_quaternary_inverted</item>
+        <item name="graphicColorSecondary">@color/graphic_secondary</item>
+        <item name="graphicColorSecondaryInverted">@color/graphic_secondary_inverted</item>
+        <item name="graphicColorTertiary">@color/graphic_tertiary</item>
+        <item name="graphicColorTertiaryInverted">@color/graphic_tertiary_inverted</item>
+        <item name="specialBackgroundColorComponent">@color/special_background_component</item>
+        <item name="specialBackgroundColorComponentInverted">
+            @color/special_background_component_inverted
+        </item>
+        <item name="specialBackgroundColorNulled">@color/special_background_nulled</item>
+        <item name="specialBackgroundColorOverlayFallback">
+            @color/special_background_overlay_fallback
+        </item>
+        <item name="specialBackgroundColorPrimaryGrouped">
+            @color/special_background_primary_grouped
+        </item>
+        <item name="specialBackgroundColorSecondaryGrouped">
+            @color/special_background_secondary_grouped
+        </item>
+        <item name="specialBackgroundColorTertiaryGrouped">
+            @color/special_background_tertiary_grouped
+        </item>
+        <item name="staticBackgroundColorAccent">@color/static_background_accent</item>
+        <item name="staticBackgroundColorPrimaryDark">@color/static_background_primary_dark</item>
+        <item name="staticBackgroundColorPrimaryLight">@color/static_background_primary_light</item>
+        <item name="staticBackgroundColorQuaternaryDark">@color/static_background_quaternary_dark
+        </item>
+        <item name="staticBackgroundColorQuaternaryLight">
+            @color/static_background_quaternary_light
+        </item>
+        <item name="staticBackgroundColorSecondaryDark">@color/static_background_secondary_dark
+        </item>
+        <item name="staticBackgroundColorSecondaryLight">@color/static_background_secondary_light
+        </item>
+        <item name="staticBackgroundColorTertiaryDark">@color/static_background_tertiary_dark</item>
+        <item name="staticBackgroundColorTertiaryLight">@color/static_background_tertiary_light
+        </item>
+        <item name="staticBorderColorAccent">@color/static_border_accent</item>
+        <item name="staticGraphicColorAccent">@color/static_graphic_accent</item>
+        <item name="staticGraphicColorDark">@color/static_graphic_dark</item>
+        <item name="staticGraphicColorLight">@color/static_graphic_light</item>
+        <item name="staticTextColorAccent">@color/static_text_accent</item>
+        <item name="staticTextColorPrimaryDark">@color/static_text_primary_dark</item>
+        <item name="staticTextColorPrimaryLight">@color/static_text_primary_light</item>
+        <item name="staticTextColorSecondaryDark">@color/static_text_secondary_dark</item>
+        <item name="staticTextColorSecondaryLight">@color/static_text_secondary_light</item>
+        <item name="staticTextColorTertiaryDark">@color/static_text_tertiary_dark</item>
+        <item name="staticTextColorTertiaryLight">@color/static_text_tertiary_light</item>
+        <item name="textColorAccent">@color/text_accent</item>
+        <item name="textColorAttention">@color/text_attention</item>
+        <item name="textColorDisabled">@color/text_disabled</item>
+        <item name="textColorDisabledInverted">@color/text_disabled_inverted</item>
+        <item name="textColorLink">@color/text_link</item>
+        <item name="textColorNegative">@color/text_negative</item>
+        <item name="textColorPositive">@color/text_positive</item>
+        <item name="textColorPrimary">@color/text_primary</item>
+        <item name="textColorPrimaryInverted">@color/text_primary_inverted</item>
+        <item name="textColorSecondary">@color/text_secondary</item>
+        <item name="textColorSecondaryInverted">@color/text_secondary_inverted</item>
+        <item name="textColorTertiary">@color/text_tertiary</item>
+        <item name="textColorTertiaryInverted">@color/text_tertiary_inverted</item>
+    </style>
+
+    <style name="Theme.Base.AlfaGradient" parent="@style/Theme.Base.AlfaTransparentColor">
+        <item name="staticBackgroundGradientPriorityPass">@drawable/static_bg_priority_pass</item>
+    </style>
+
+    <style name="Theme.Base.AlfaNative" parent="@style/Theme.Base.AlfaGradient">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="android:textColorLink">?attr/textColorLink</item>
+        <item name="android:ambientShadowAlpha">0.04</item>
+        <item name="android:spotShadowAlpha">0.12</item>
+        <item name="colorControlActivated">?attr/graphicColorSecondary</item>
+        <item name="colorControlHighlight">?attr/graphicColorSecondary</item>
+        <item name="colorControlNormal">?attr/graphicColorSecondary</item>
+        <item name="colorPrimary">?attr/backgroundColorAccent</item>
+    </style>
+
+    <style name="Theme.Base.AlfaStaticColor" parent="@style/Theme.MaterialComponents.Light.DarkActionBar.Bridge">
+        <item name="staticCorpbackgroundColorNeutral">@color/static_corpbg_neutral</item>
+        <item name="staticCorpbackgroundColorPrimary">@color/static_corpbg_primary</item>
+        <item name="staticCorpbackgroundColorSecondary">@color/static_corpbg_secondary</item>
+        <item name="staticCorpbackgroundColorTertiary">@color/static_corpbg_tertiary</item>
+        <item name="staticGraphicColorAmethyst">@color/static_graphic_amethyst</item>
+        <item name="staticGraphicColorBlackberry">@color/static_graphic_blackberry</item>
+        <item name="staticGraphicColorBlueChill">@color/static_graphic_blue_chill</item>
+        <item name="staticGraphicColorBlueMaya">@color/static_graphic_blue_maya</item>
+        <item name="staticGraphicColorBlueMoody">@color/static_graphic_blue_moody</item>
+        <item name="staticGraphicColorBlueSteel">@color/static_graphic_blue_steel</item>
+        <item name="staticGraphicColorBotticelli">@color/static_graphic_botticelli</item>
+        <item name="staticGraphicColorBoulder">@color/static_graphic_boulder</item>
+        <item name="staticGraphicColorBrinkPink">@color/static_graphic_brink_pink</item>
+        <item name="staticGraphicColorBurntSienna">@color/static_graphic_burnt_sienna</item>
+        <item name="staticGraphicColorCarrot">@color/static_graphic_carrot</item>
+        <item name="staticGraphicColorChatelle">@color/static_graphic_chatelle</item>
+        <item name="staticGraphicColorChathamsBlue">@color/static_graphic_chathams_blue</item>
+        <item name="staticGraphicColorChick">@color/static_graphic_chick</item>
+        <item name="staticGraphicColorCrete">@color/static_graphic_crete</item>
+        <item name="staticGraphicColorCuriousBlue">@color/static_graphic_curious_blue</item>
+        <item name="staticGraphicColorCuriousBlueLight">@color/static_graphic_curious_blue_light
+        </item>
+        <item name="staticGraphicColorEasternBlue">@color/static_graphic_eastern_blue</item>
+        <item name="staticGraphicColorFrenchLilac">@color/static_graphic_french_lilac</item>
+        <item name="staticGraphicColorFuelYellow">@color/static_graphic_fuel_yellow</item>
+        <item name="staticGraphicColorFunBlue">@color/static_graphic_fun_blue</item>
+        <item name="staticGraphicColorGallery">@color/static_graphic_gallery</item>
+        <item name="staticGraphicColorGreenJungle">@color/static_graphic_green_jungle</item>
+        <item name="staticGraphicColorHippieBlue">@color/static_graphic_hippie_blue</item>
+        <item name="staticGraphicColorJaffa">@color/static_graphic_jaffa</item>
+        <item name="staticGraphicColorJaffaLight">@color/static_graphic_jaffa_light</item>
+        <item name="staticGraphicColorJava">@color/static_graphic_java</item>
+        <item name="staticGraphicColorJungleGreen">@color/static_graphic_jungle_green</item>
+        <item name="staticGraphicColorLavender">@color/static_graphic_lavender</item>
+        <item name="staticGraphicColorMantis">@color/static_graphic_mantis</item>
+        <item name="staticGraphicColorMatisse">@color/static_graphic_matisse</item>
+        <item name="staticGraphicColorMilanoRed">@color/static_graphic_milano_red</item>
+        <item name="staticGraphicColorMirage">@color/static_graphic_mirage</item>
+        <item name="staticGraphicColorMoonRaker">@color/static_graphic_moon_raker</item>
+        <item name="staticGraphicColorMossGreen">@color/static_graphic_moss_green</item>
+        <item name="staticGraphicColorNevada">@color/static_graphic_nevada</item>
+        <item name="staticGraphicColorOlive">@color/static_graphic_olive</item>
+        <item name="staticGraphicColorOlivine">@color/static_graphic_olivine</item>
+        <item name="staticGraphicColorPeach">@color/static_graphic_peach</item>
+        <item name="staticGraphicColorPersimmon">@color/static_graphic_persimmon</item>
+        <item name="staticGraphicColorPewter">@color/static_graphic_pewter</item>
+        <item name="staticGraphicColorPickledBluewood">@color/static_graphic_pickled_bluewood</item>
+        <item name="staticGraphicColorPorsche">@color/static_graphic_porsche</item>
+        <item name="staticGraphicColorRaspberry">@color/static_graphic_raspberry</item>
+        <item name="staticGraphicColorRedDamask">@color/static_graphic_red_damask</item>
+        <item name="staticGraphicColorSaffron">@color/static_graphic_saffron</item>
+        <item name="staticGraphicColorSalomie">@color/static_graphic_salomie</item>
+        <item name="staticGraphicColorSand">@color/static_graphic_sand</item>
+        <item name="staticGraphicColorSandyBrown">@color/static_graphic_sandy_brown</item>
+        <item name="staticGraphicColorSeawater">@color/static_graphic_seawater</item>
+        <item name="staticGraphicColorSerenade">@color/static_graphic_serenade</item>
+        <item name="staticGraphicColorSky">@color/static_graphic_sky</item>
+        <item name="staticGraphicColorSoftPeach">@color/static_graphic_soft_peach</item>
+        <item name="staticGraphicColorSolitude">@color/static_graphic_solitude</item>
+        <item name="staticGraphicColorStrawberry">@color/static_graphic_strawberry</item>
+        <item name="staticGraphicColorSundust">@color/static_graphic_sundust</item>
+        <item name="staticGraphicColorTurkishRose">@color/static_graphic_turkish_rose</item>
+        <item name="staticGraphicColorTurquoiseBlue">@color/static_graphic_turquoise_blue</item>
+        <item name="staticGraphicColorValencia">@color/static_graphic_valencia</item>
+        <item name="staticGraphicColorWaikawaGray">@color/static_graphic_waikawa_gray</item>
+        <item name="staticGraphicColorWhisper">@color/static_graphic_whisper</item>
+        <item name="staticGraphicColorZanah">@color/static_graphic_zanah</item>
+        <item name="staticLocalColorLightBlue">@color/static_local_light_blue</item>
+        <item name="staticOverlayColorBlackHigh">@color/static_overlay_black_high</item>
+        <item name="staticOverlayColorBlackLow">@color/static_overlay_black_low</item>
+        <item name="staticOverlayColorBlackNormal">@color/static_overlay_black_normal</item>
+        <item name="staticOverlayColorBlackXhigh">@color/static_overlay_black_xhigh</item>
+        <item name="staticOverlayColorBlackXlow">@color/static_overlay_black_xlow</item>
+        <item name="staticOverlayColorIndigoHigh">@color/static_overlay_indigo_high</item>
+        <item name="staticOverlayColorIndigoLow">@color/static_overlay_indigo_low</item>
+        <item name="staticOverlayColorIndigoNormal">@color/static_overlay_indigo_normal</item>
+        <item name="staticOverlayColorIndigoXhigh">@color/static_overlay_indigo_xhigh</item>
+        <item name="staticOverlayColorIndigoXlow">@color/static_overlay_indigo_xlow</item>
+        <item name="staticOverlayColorWhiteHigh">@color/static_overlay_white_high</item>
+        <item name="staticOverlayColorWhiteLow">@color/static_overlay_white_low</item>
+        <item name="staticOverlayColorWhiteNormal">@color/static_overlay_white_normal</item>
+        <item name="staticOverlayColorWhiteXhigh">@color/static_overlay_white_xhigh</item>
+        <item name="staticOverlayColorWhiteXlow">@color/static_overlay_white_xlow</item>
+        <item name="staticStatusColorBlue">@color/static_status_blue</item>
+        <item name="staticStatusColorGreen">@color/static_status_green</item>
+        <item name="staticStatusColorGrey">@color/static_status_grey</item>
+        <item name="staticStatusColorOrange">@color/static_status_orange</item>
+        <item name="staticStatusColorPurple">@color/static_status_purple</item>
+        <item name="staticStatusColorRed">@color/static_status_red</item>
+        <item name="staticStatusColorTeal">@color/static_status_teal</item>
+    </style>
+
+    <style name="Theme.Base.AlfaTransparentColor" parent="@style/Theme.Base.AlfaColor">
+        <item name="staticTransparentColorNulled">@color/static_nulled</item>
+        <item name="staticTransparentColorPrimaryDark">@color/static_primary_dark</item>
+        <item name="staticTransparentColorPrimaryLight">@color/static_primary_light</item>
+        <item name="staticTransparentColorQuaternaryDark">@color/static_quaternary_dark</item>
+        <item name="staticTransparentColorQuaternaryLight">@color/static_quaternary_light</item>
+        <item name="staticTransparentColorQuinaryDark">@color/static_quinary_dark</item>
+        <item name="staticTransparentColorQuinaryLight">@color/static_quinary_light</item>
+        <item name="staticTransparentColorSecondaryDark">@color/static_secondary_dark</item>
+        <item name="staticTransparentColorSecondaryLight">@color/static_secondary_light</item>
+        <item name="staticTransparentColorSenaryDark">@color/static_senary_dark</item>
+        <item name="staticTransparentColorSenaryLight">@color/static_senary_light</item>
+        <item name="staticTransparentColorTertiaryDark">@color/static_tertiary_dark</item>
+        <item name="staticTransparentColorTertiaryLight">@color/static_tertiary_light</item>
+        <item name="transparentColorNulled">@color/dynamic_nulled</item>
+        <item name="transparentColorPrimaryDark">@color/dynamic_primary_dark</item>
+        <item name="transparentColorPrimaryLight">@color/dynamic_primary_light</item>
+        <item name="transparentColorQuaternaryDark">@color/dynamic_quaternary_dark</item>
+        <item name="transparentColorQuaternaryLight">@color/dynamic_quaternary_light</item>
+        <item name="transparentColorQuinaryDark">@color/dynamic_quinary_dark</item>
+        <item name="transparentColorQuinaryLight">@color/dynamic_quinary_light</item>
+        <item name="transparentColorSecondaryDark">@color/dynamic_secondary_dark</item>
+        <item name="transparentColorSecondaryLight">@color/dynamic_secondary_light</item>
+        <item name="transparentColorSenaryDark">@color/dynamic_senary_dark</item>
+        <item name="transparentColorSenaryLight">@color/dynamic_senary_light</item>
+        <item name="transparentColorTertiaryDark">@color/dynamic_tertiary_dark</item>
+        <item name="transparentColorTertiaryLight">@color/dynamic_tertiary_light</item>
+    </style>
+
+    <style name="Theme.Design.BottomSheetDialog" parent="@style/Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+        <item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal</item>
+    </style>
+
+    <style name="Theme.Design.Light.NoActionBar" parent="@style/Theme.Design.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Design.NoActionBar" parent="@style/Theme.Design">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="Theme.MaterialComponents.BottomSheetDialog" parent="@style/Theme.MaterialComponents.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">
+            @style/Animation.MaterialComponents.BottomSheetDialog
+        </item>
+        <item name="bottomSheetStyle">@style/Widget.MaterialComponents.BottomSheet.Modal</item>
+    </style>
+
+    <style name="BaseTextStyle">
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="BaseTextView" parent="@android:style/Widget.TextView" />
+
+    <style name="TextStyle.AccentCaps" parent="@style/BaseTextStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.AccentComponent" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.AccentPrimaryLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">17dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.AccentPrimaryMedium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">17dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.AccentPrimarySmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.AccentSecondaryLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.AccentSecondaryMedium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.AccentSecondarySmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.AccentTagline" parent="@style/BaseTextStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.ActionCaps" parent="@style/BaseTextStyle">
+        <item name="android:textSize">12dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.ActionComponent" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.ActionPrimaryLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">18dp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">17dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.ActionPrimaryMedium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">17dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.ActionPrimarySmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">14dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.ActionSecondaryLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">13dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.ActionSecondaryMedium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">12dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.ActionSecondarySmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">11dp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.ActionTagline" parent="@style/BaseTextStyle">
+        <item name="android:textSize">12dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.Caption" parent="@style/BaseTextStyle">
+        <item name="android:textSize">12dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.12</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.Heading1" parent="@style/BaseTextStyle">
+        <item name="android:textSize">30dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="firstBaselineToTopHeight">28dp</item>
+        <item name="lastBaselineToBottomHeight">8dp</item>
+    </style>
+
+    <style name="TextStyle.Heading2" parent="@style/BaseTextStyle">
+        <item name="android:textSize">26dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="firstBaselineToTopHeight">25dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.Heading3" parent="@style/BaseTextStyle">
+        <item name="android:textSize">20dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">21dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.HeadlineLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">30dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="firstBaselineToTopHeight">28dp</item>
+        <item name="lastBaselineToBottomHeight">8dp</item>
+    </style>
+
+    <style name="TextStyle.HeadlineMedium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">26dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="firstBaselineToTopHeight">25dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.HeadlineSmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">20dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">21dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.HeadlineXLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">40dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="firstBaselineToTopHeight">38dp</item>
+        <item name="lastBaselineToBottomHeight">10dp</item>
+    </style>
+
+    <style name="TextStyle.HeadlineXSmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">17dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.LegacyLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">30dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="firstBaselineToTopHeight">0dp</item>
+        <item name="lastBaselineToBottomHeight">0dp</item>
+    </style>
+
+    <style name="TextStyle.LegacyMedium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">26dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="firstBaselineToTopHeight">0dp</item>
+        <item name="lastBaselineToBottomHeight">0dp</item>
+    </style>
+
+    <style name="TextStyle.LegacySmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">20dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">0dp</item>
+        <item name="lastBaselineToBottomHeight">0dp</item>
+    </style>
+
+    <style name="TextStyle.LegacyXLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">40dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="firstBaselineToTopHeight">0dp</item>
+        <item name="lastBaselineToBottomHeight">0dp</item>
+    </style>
+
+    <style name="TextStyle.LegacyXSmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">0dp</item>
+        <item name="lastBaselineToBottomHeight">0dp</item>
+    </style>
+
+    <style name="TextStyle.ParagraphCaps" parent="@style/BaseTextStyle">
+        <item name="android:textSize">12dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.ParagraphComponent" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.ParagraphPrimaryLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">18dp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">17dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.ParagraphPrimaryMedium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">17dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.ParagraphPrimarySmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">14dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.ParagraphSecondaryLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">13dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.ParagraphSecondaryMedium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">12dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.ParagraphSecondarySmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">11dp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.ParagraphTagline" parent="@style/BaseTextStyle">
+        <item name="android:textSize">12dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyle.PrimaryComponents.Bold" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.PrimaryComponents.Medium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.PrimaryComponents.Regular" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.PrimaryParagraph.Bold" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">17dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.PrimaryParagraph.Medium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">17dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.PrimaryParagraph.Regular" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">17dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.PromoLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">30dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="firstBaselineToTopHeight">28dp</item>
+        <item name="lastBaselineToBottomHeight">8dp</item>
+    </style>
+
+    <style name="TextStyle.PromoMedium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">26dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="firstBaselineToTopHeight">25dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.PromoSmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">20dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">21dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.PromoXLarge" parent="@style/BaseTextStyle">
+        <item name="android:textSize">40dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="firstBaselineToTopHeight">38dp</item>
+        <item name="lastBaselineToBottomHeight">10dp</item>
+    </style>
+
+    <style name="TextStyle.PromoXSmall" parent="@style/BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="firstBaselineToTopHeight">17dp</item>
+        <item name="lastBaselineToBottomHeight">7dp</item>
+    </style>
+
+    <style name="TextStyle.Secondary.Bold" parent="@style/BaseTextStyle">
+        <item name="android:textSize">14dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.Secondary.Medium" parent="@style/BaseTextStyle">
+        <item name="android:textSize">14dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.Secondary.Regular" parent="@style/BaseTextStyle">
+        <item name="android:textSize">14dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+    </style>
+
+    <style name="TextStyle.Tertiary" parent="@style/BaseTextStyle">
+        <item name="android:textSize">12dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="firstBaselineToTopHeight">12dp</item>
+        <item name="lastBaselineToBottomHeight">4dp</item>
+    </style>
+
+    <style name="TextStyleMarkdownDescription" parent="@style/TextStyle.ParagraphPrimarySmall">
+        <item name="android:textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextStyleMarkdownH1" parent="@style/TextStyle.HeadlineMedium" />
+
+    <style name="TextStyleMarkdownH2" parent="@style/TextStyle.HeadlineSmall" />
+
+    <style name="TextStyleMarkdownH3" parent="@style/TextStyle.HeadlineXSmall" />
+
+    <style name="TextStyleMarkdownLink">
+        <item name="android:textColor">?attr/textColorLink</item>
+    </style>
+
+    <style name="TextStyleMarkdownParagraph" parent="@style/TextStyle.ParagraphPrimaryMedium" />
+
+    <style name="TextStyleMarkdownStrikeThrough">
+        <item name="android:textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextTertiaryDark" parent="@style/BaseTextView">
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+        <item name="android:textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="RobotoRegular" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="TextTertiaryLight" parent="@style/BaseTextView">
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+        <item name="android:textColor">?attr/textColorSecondaryInverted</item>
+    </style>
+
+    <style name="TextViewAlpha" parent="@android:style/Widget.TextView" />
+
+    <style name="RobotoBold" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="TextView.Bold" parent="@style/TextViewAlpha">
+        <item name="android:textAppearance">@style/RobotoBold</item>
+    </style>
+
+    <style name="TextView.Bold.DarkIndigo" parent="@style/TextView.Bold">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_dark_indigo_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Bold.DarkIndigo.12dp" parent="@style/TextView.Bold.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Bold.DarkIndigo.14dp" parent="@style/TextView.Bold.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Bold.DarkIndigo.16dp" parent="@style/TextView.Bold.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Bold.DarkIndigo.18dp" parent="@style/TextView.Bold.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_18dp</item>
+    </style>
+
+    <style name="TextView.Bold.DarkIndigo.20dp" parent="@style/TextView.Bold.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_20dp</item>
+    </style>
+
+    <style name="TextView.Bold.DarkIndigo.22dp" parent="@style/TextView.Bold.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_22dp</item>
+    </style>
+
+    <style name="TextView.Bold.White" parent="@style/TextView.Bold">
+        <item name="android:textColor">?attr/textColorPrimaryInverted</item>
+    </style>
+
+    <style name="TextView.Bold.White.15dp" parent="@style/TextView.Bold.White">
+        <item name="android:textSize">@dimen/font_size_15dp</item>
+    </style>
+
+    <style name="TextView.Bold.White.16dp" parent="@style/TextView.Bold.White">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Bold.White.22dp" parent="@style/TextView.Bold.White">
+        <item name="android:textSize">@dimen/font_size_22dp</item>
+    </style>
+
+    <style name="TextView.Bold.White.24dp" parent="@style/TextView.Bold.White">
+        <item name="android:textSize">@dimen/font_size_24dp</item>
+    </style>
+
+    <style name="TextView.DarkHeader" parent="@style/TextView.Medium.DarkIndigo_60.12dp">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.2</item>
+    </style>
+
+    <style name="TextView.DarkIndigo" parent="@style/TextViewAlpha">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextView.Header" parent="@style/TextView.Medium.DarkIndigo_60.12dp">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.2</item>
+    </style>
+
+    <style name="RobotoLight" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/roboto_light</item>
+    </style>
+
+    <style name="TextView.Light" parent="@style/TextViewAlpha">
+        <item name="android:textAppearance">@style/RobotoLight</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo" parent="@style/TextView.Light">
+        <item name="android:textColor">@color/dark_indigo_text_view_color</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_dark_indigo_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Light.DarkIndigo.12dp" parent="@style/TextView.Light.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo.14dp" parent="@style/TextView.Light.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo.15dp" parent="@style/TextView.Light.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_15dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo.16dp" parent="@style/TextView.Light.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo.18dp" parent="@style/TextView.Light.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_18dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo.20dp" parent="@style/TextView.Light.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_20dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo.27dp" parent="@style/TextView.Light.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_27dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo.30dp" parent="@style/TextView.Light.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_30dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo.40dp" parent="@style/TextView.Light.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_40dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo_60" parent="@style/TextView.Light">
+        <item name="android:color">?attr/textColorSecondary</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_dark_indigo_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Light.DarkIndigo_60.12dp" parent="@style/TextView.Light.DarkIndigo_60">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo_60.13dp" parent="@style/TextView.Light.DarkIndigo_60">
+        <item name="android:textSize">@dimen/font_size_13dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo_60.14dp" parent="@style/TextView.Light.DarkIndigo_60">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo_60.16dp" parent="@style/TextView.Light.DarkIndigo_60">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo_60.27dp" parent="@style/TextView.Light.DarkIndigo_60">
+        <item name="android:textSize">@dimen/font_size_27dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo_60_flat" parent="@style/TextView.Light">
+        <item name="android:textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo_60_flat.12dp" parent="@style/TextView.Light.DarkIndigo_60_flat">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo_60_flat.14dp" parent="@style/TextView.Light.DarkIndigo_60_flat">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo_60_flat.16dp" parent="@style/TextView.Light.DarkIndigo_60_flat">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Light.DarkIndigo_60_flat.18dp" parent="@style/TextView.Light.DarkIndigo_60_flat">
+        <item name="android:textSize">@dimen/font_size_18dp</item>
+    </style>
+
+    <style name="TextView.Light.Tomato" parent="@style/TextView.Light">
+        <item name="android:textColor">?attr/textColorAccent</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_tomato_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Light.Tomato.13dp" parent="@style/TextView.Light.Tomato">
+        <item name="android:textSize">@dimen/font_size_13dp</item>
+    </style>
+
+    <style name="TextView.Light.White" parent="@style/TextView.Light">
+        <item name="android:textColor">?attr/textColorPrimaryInverted</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_white_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Light.White.12dp" parent="@style/TextView.Light.White">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Light.White.14dp" parent="@style/TextView.Light.White">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Light.White.15dp" parent="@style/TextView.Light.White">
+        <item name="android:textSize">@dimen/font_size_15dp</item>
+    </style>
+
+    <style name="TextView.Light.White.16dp" parent="@style/TextView.Light.White">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Light.White.18dp" parent="@style/TextView.Light.White">
+        <item name="android:textSize">@dimen/font_size_18dp</item>
+    </style>
+
+    <style name="TextView.Light.White.20dp" parent="@style/TextView.Light.White">
+        <item name="android:textSize">@dimen/font_size_20dp</item>
+    </style>
+
+    <style name="TextView.Light.White.22dp" parent="@style/TextView.Light.White">
+        <item name="android:textSize">@dimen/font_size_22dp</item>
+    </style>
+
+    <style name="TextView.Light.White.24dp" parent="@style/TextView.Light.White">
+        <item name="android:textSize">@dimen/font_size_24dp</item>
+    </style>
+
+    <style name="TextView.Light.White.30dp" parent="@style/TextView.Light.White">
+        <item name="android:textSize">@dimen/font_size_30dp</item>
+    </style>
+
+    <style name="TextView.Light.White.40dp" parent="@style/TextView.Light.White">
+        <item name="android:textSize">@dimen/font_size_40dp</item>
+    </style>
+
+    <style name="TextView.Light.White_30" parent="@style/TextView.Light">
+        <item name="android:textColor">?attr/textColorTertiaryInverted</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_white_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Light.White_30.13dp" parent="@style/TextView.Light.White_30">
+        <item name="android:textSize">@dimen/font_size_13dp</item>
+    </style>
+
+    <style name="TextView.Light.White_60" parent="@style/TextView.Light">
+        <item name="android:textColor">?attr/textColorSecondaryInverted</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_white_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Light.White_60.12dp" parent="@style/TextView.Light.White_60">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Light.White_60.13dp" parent="@style/TextView.Light.White_60">
+        <item name="android:textSize">@dimen/font_size_13dp</item>
+    </style>
+
+    <style name="TextView.Light.White_60.14dp" parent="@style/TextView.Light.White_60">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Light.White_60.16dp" parent="@style/TextView.Light.White_60">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Medium" parent="@style/TextViewAlpha">
+        <item name="android:textAppearance">@style/RobotoMedium</item>
+    </style>
+
+    <style name="TextView.Medium.DarkIndigo" parent="@style/TextView.Medium">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_dark_indigo_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Medium.DarkIndigo.11dp" parent="@style/TextView.Medium.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_11dp</item>
+    </style>
+
+    <style name="TextView.Medium.DarkIndigo.12dp" parent="@style/TextView.Medium.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Medium.DarkIndigo.14dp" parent="@style/TextView.Medium.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Medium.DarkIndigo.16dp" parent="@style/TextView.Medium.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Medium.DarkIndigo.20dp" parent="@style/TextView.Medium.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_20dp</item>
+    </style>
+
+    <style name="TextView.Medium.DarkIndigo.22dp" parent="@style/TextView.Medium.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_22dp</item>
+    </style>
+
+    <style name="TextView.Medium.DarkIndigo_60" parent="@style/TextView.Medium">
+        <item name="android:textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextView.Medium.DarkIndigo_60.12dp" parent="@style/TextView.Medium.DarkIndigo_60">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Medium.Tomato" parent="@style/TextView.Medium">
+        <item name="android:textColor">?attr/textColorAccent</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_tomato_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Medium.Tomato.14dp" parent="@style/TextView.Medium.Tomato">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Medium.Tomato.16dp" parent="@style/TextView.Medium.Tomato">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Medium.White" parent="@style/TextView.Medium">
+        <item name="android:textColor">?attr/textColorPrimaryInverted</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_white_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Medium.White.11dp" parent="@style/TextView.Medium.White">
+        <item name="android:textSize">@dimen/font_size_11dp</item>
+    </style>
+
+    <style name="TextView.Medium.White.12dp" parent="@style/TextView.Medium.White">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Medium.White.15dp" parent="@style/TextView.Medium.White">
+        <item name="android:textSize">@dimen/font_size_15dp</item>
+    </style>
+
+    <style name="TextView.Medium.White.16dp" parent="@style/TextView.Medium.White">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Medium.White.18dp" parent="@style/TextView.Medium.White">
+        <item name="android:textSize">@dimen/font_size_18dp</item>
+    </style>
+
+    <style name="TextView.Medium.White.20dp" parent="@style/TextView.Medium.White">
+        <item name="android:textSize">@dimen/font_size_20dp</item>
+    </style>
+
+    <style name="TextView.Medium.White.22dp" parent="@style/TextView.Medium.White">
+        <item name="android:textSize">@dimen/font_size_22dp</item>
+    </style>
+
+    <style name="TextView.Regular" parent="@style/TextViewAlpha">
+        <item name="android:textAppearance">@style/RobotoRegular</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo" parent="@style/TextView.Regular">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_dark_indigo_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo.11dp" parent="@style/TextView.Regular.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_11dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo.12dp" parent="@style/TextView.Regular.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo.14dp" parent="@style/TextView.Regular.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo.16dp" parent="@style/TextView.Regular.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo.18dp" parent="@style/TextView.Regular.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_18dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo.20dp" parent="@style/TextView.Regular.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_20dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo.30dp" parent="@style/TextView.Regular.DarkIndigo">
+        <item name="android:textSize">@dimen/font_size_30dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo_30" parent="@style/TextView.Regular">
+        <item name="android:textColor">?attr/textColorTertiary</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo_30.13dp" parent="@style/TextView.Regular.DarkIndigo_30">
+        <item name="android:textSize">@dimen/font_size_13dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo_60" parent="@style/TextView.Regular">
+        <item name="android:textColor">?attr/textColorSecondary</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_dark_indigo_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo_60.12dp" parent="@style/TextView.Regular.DarkIndigo_60">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo_60.14dp" parent="@style/TextView.Regular.DarkIndigo_60">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo_60.16dp" parent="@style/TextView.Regular.DarkIndigo_60">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo_60.24dp" parent="@style/TextView.Regular.DarkIndigo_60">
+        <item name="android:textSize">@dimen/font_size_24dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo_70" parent="@style/TextView.Regular">
+        <item name="android:textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo_70.12dp" parent="@style/TextView.Regular.DarkIndigo_70">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo_70.14dp" parent="@style/TextView.Regular.DarkIndigo_70">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkIndigo_70.16dp" parent="@style/TextView.Regular.DarkIndigo_70">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkInigo_60_flat" parent="@style/TextView.Regular">
+        <item name="android:textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextView.Regular.DarkInigo_60_flat.12dp" parent="@style/TextView.Regular.DarkInigo_60_flat">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Regular.DarkInigo_60_flat.14dp" parent="@style/TextView.Regular.DarkInigo_60_flat">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Regular.Tomato" parent="@style/TextView.Regular">
+        <item name="android:textColor">?attr/textColorAccent</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_tomato_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Regular.Tomato.12dp" parent="@style/TextView.Regular.Tomato">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Regular.Tomato.14dp" parent="@style/TextView.Regular.Tomato">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Regular.Tomato.16dp" parent="@style/TextView.Regular.Tomato">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Regular.Tomato.16dp.Clickable" parent="@style/TextView.Regular.Tomato.16dp">
+        <item name="android:textColor">@color/tomato_text_selector</item>
+    </style>
+
+    <style name="TextView.Regular.White" parent="@style/TextView.Regular">
+        <item name="android:textColor">?attr/textColorPrimaryInverted</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_white_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Regular.White.11dp" parent="@style/TextView.Regular.White">
+        <item name="android:textSize">@dimen/font_size_11dp</item>
+    </style>
+
+    <style name="TextView.Regular.White.12dp" parent="@style/TextView.Regular.White">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Regular.White.13dp" parent="@style/TextView.Regular.White">
+        <item name="android:textSize">@dimen/font_size_13dp</item>
+    </style>
+
+    <style name="TextView.Regular.White.14dp" parent="@style/TextView.Regular.White">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Regular.White.15dp" parent="@style/TextView.Regular.White">
+        <item name="android:textSize">@dimen/font_size_15dp</item>
+    </style>
+
+    <style name="TextView.Regular.White.16dp" parent="@style/TextView.Regular.White">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Regular.White.18dp" parent="@style/TextView.Regular.White">
+        <item name="android:textSize">@dimen/font_size_18dp</item>
+    </style>
+
+    <style name="TextView.Regular.White.20dp" parent="@style/TextView.Regular.White">
+        <item name="android:textSize">@dimen/font_size_20dp</item>
+    </style>
+
+    <style name="TextView.Regular.White.22dp" parent="@style/TextView.Regular.White">
+        <item name="android:textSize">@dimen/font_size_22dp</item>
+    </style>
+
+    <style name="TextView.Regular.White_60" parent="@style/TextView.Regular">
+        <item name="android:textColor">?attr/textColorSecondaryInverted</item>
+<!--        <item name="ptv_progressAlpha">@dimen/text_view_white_progress_alpha</item>-->
+    </style>
+
+    <style name="TextView.Regular.White_60.12dp" parent="@style/TextView.Regular.White_60">
+        <item name="android:textSize">@dimen/font_size_12dp</item>
+    </style>
+
+    <style name="TextView.Regular.White_60.13dp" parent="@style/TextView.Regular.White_60">
+        <item name="android:textSize">@dimen/font_size_13dp</item>
+    </style>
+
+    <style name="TextView.Regular.White_60.14dp" parent="@style/TextView.Regular.White_60">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Regular.White_60.16dp" parent="@style/TextView.Regular.White_60">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.Regular.White_60.17dp" parent="@style/TextView.Regular.White_60">
+        <item name="android:textSize">@dimen/font_size_17dp</item>
+    </style>
+
+    <style name="TextView.Regular.White_60.18dp" parent="@style/TextView.Regular.White_60">
+        <item name="android:textSize">@dimen/font_size_18dp</item>
+    </style>
+
+    <style name="TextView.Regular.White_60.24dp" parent="@style/TextView.Regular.White_60">
+        <item name="android:textSize">@dimen/font_size_24dp</item>
+    </style>
+
+    <style name="TextView.Regular.White_70" parent="@style/TextView.Regular">
+        <item name="android:textColor">?attr/textColorSecondaryInverted</item>
+    </style>
+
+    <style name="TextView.Regular.White_70.14dp" parent="@style/TextView.Regular.White_70">
+        <item name="android:textSize">@dimen/font_size_14dp</item>
+    </style>
+
+    <style name="TextView.Regular.White_70.16dp" parent="@style/TextView.Regular.White_70">
+        <item name="android:textSize">@dimen/font_size_16dp</item>
+    </style>
+
+    <style name="TextView.White" parent="@style/TextViewAlpha">
+        <item name="android:textColor">?attr/textColorPrimaryInverted</item>
+    </style>
+
+    <style name="Theme.AlfaWidgets" parent="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+    </style>
+
+    <style name="RedTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="RedTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="RedTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>

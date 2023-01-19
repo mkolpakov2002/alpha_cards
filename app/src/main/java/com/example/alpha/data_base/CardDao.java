@@ -19,17 +19,17 @@ public interface CardDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Card... item);
 
-//    // Удаление из бд
-//    @Query("DELETE FROM cards WHERE cardId = :id")
-//    void delete(int id);
-//
-//    @Query("DELETE FROM cards")
-//    void deleteAll();
+    // Удаление из бд
+    @Query("DELETE FROM card WHERE cardId = :id")
+    void delete(int id);
+
+    @Query("DELETE FROM card")
+    void deleteAll();
 
     @Update
     void update(Card item);
 
     // Получение всех Person из бд
-    @Query("SELECT * FROM cards")
+    @Query("SELECT * FROM card")
     LiveData<List<Card>> getAll();
 }

@@ -12,16 +12,20 @@ import androidx.navigation.ui.AppBarConfiguration.Builder
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.alpha.databinding.ActivityMainBinding
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
     private var navView: BottomNavigationView? = null
     private var navController: NavController? = null
+    private var materialToolbar: MaterialToolbar? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
+        materialToolbar = binding!!.materialToolbar
+        setSupportActionBar(materialToolbar)
         navView = binding!!.navView
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
