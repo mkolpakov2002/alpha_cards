@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/camera_permission_lottie" />
+        app:lottie_rawRes="@raw/access_location_permission" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button"

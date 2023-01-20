@@ -1,34 +1,72 @@
-package com.example.alpha.ui.permission_location;
+package com.example.alpha.ui.permission_location
 
-import android.os.Bundle;
+import android.Manifest
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.View.OnClickListener
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import com.example.alpha.R
+import com.example.alpha.databinding.FragmentPermissionCameraBinding
+import com.example.alpha.databinding.FragmentPermissionLocationBinding
+import com.example.alpha.rxpermissions3.RxPermissions
+import com.example.alpha.ui.permission.PermissionManager
+import com.example.alpha.ui.permission.PermissionManager.checkIfCameraPermissionIsGranted
+import com.google.android.material.button.MaterialButton
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+class PermissionLocationFragment : Fragment() {
+    private var binding: FragmentPermissionLocationBinding? = null
+    private var materialButtonGrant: MaterialButton? = null
+    private var rxPermissions: RxPermissions? = null
+    private val disposables = CompositeDisposable()
 
-import com.example.alpha.R;
-import com.example.alpha.databinding.FragmentPermissionCameraBinding;
-public class PermissionLocationFragment extends Fragment {
 
-    private FragmentPermissionCameraBinding binding;
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentPermissionLocationBinding.inflate(
+            inflater,
+            container,
+            false
+        )
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+        rxPermissions = RxPermissions(this)
 
-        binding = FragmentPermissionCameraBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        materialButtonGrant = binding!!.button
 
-//        final TextView textView = binding.textNotifications;
-//        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+        materialButtonGrant!!.setOnClickListener{
+            // Must be done during an initialization phase like onCreate
+            disposables.add(rxPermissions!!
+                .requestEachCombined(Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { granted ->
+                    if (!granted.granted) { // Always true pre-M
+                        Toast.makeText(requireActivity(), "Разрешение не дано.", Toast.LENGTH_SHORT).show()
+                    }
+                    Navigation.findNavController(binding!!.root).navigate(R.id.navigation_home)
+                })
+        }
+
+        return binding!!.root
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    override fun onDestroyView() {
+        super.onDestroyView()
+        disposables.clear()
+        binding = null
     }
+
+//    override fun onClick(v: View?) {
+//        if(checkIfCameraPermissionIsGranted(requireContext(), binding!!.root)){
+//            Navigation.findNavController(binding!!.root).navigate(com.example.alpha.R.id.navigation_home)
+//        }
+//    }
 }

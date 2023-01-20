@@ -22,13 +22,25 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_dashboard"
             app:destination="@id/navigation_dashboard" />
+        <action
+            android:id="@+id/action_navigation_home_to_greetingFragment"
+            app:destination="@id/greetingFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_greetingFragment2"
+            app:destination="@id/greetingFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_codeGoogleActivity"
+            app:destination="@id/codeGoogleActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_liveBarcodeScanningActivity"
+            app:destination="@id/liveBarcodeScanningActivity" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.alpha.ui.dashboard.DashboardFragment"
+        android:name="com.example.alpha.ui.map.MapFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_map" >
         <action
             android:id="@+id/action_navigation_dashboard_to_navigation_home"
             app:destination="@id/navigation_home" />
@@ -66,6 +78,12 @@
         <action
             android:id="@+id/action_permissionLocationFragment_to_navigation_notifications"
             app:destination="@id/navigation_notifications" />
+        <action
+            android:id="@+id/action_permissionLocationFragment_to_permissionGrantedDialog"
+            app:destination="@id/permissionGrantedDialog" />
+        <action
+            android:id="@+id/action_permissionLocationFragment_to_greetingFragment"
+            app:destination="@id/greetingFragment" />
     </fragment>
     <fragment
         android:id="@+id/permissionCameraFragment"
@@ -75,10 +93,55 @@
         <action
             android:id="@+id/action_permissionCameraFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_permissionCameraFragment_to_permissionGrantedDialog"
+            app:destination="@id/permissionGrantedDialog" />
+        <action
+            android:id="@+id/action_permissionCameraFragment_to_greetingFragment"
+            app:destination="@id/greetingFragment" />
+        <action
+            android:id="@+id/action_permissionCameraFragment_to_permissionLocationFragment"
+            app:destination="@id/permissionLocationFragment" />
     </fragment>
     <activity
         android:id="@+id/splashActivity"
         android:name="com.example.alpha.SplashActivity"
         android:label="activity_splash"
         tools:layout="@layout/activity_splash" />
+    <dialog
+        android:id="@+id/permissionGrantedDialog"
+        android:name="com.example.alpha.ui.permission.PermissionGrantedDialog"
+        android:label="PermissionGrantedDialog"
+        tools:layout="@layout/dialog_permission_granted">
+        <action
+            android:id="@+id/action_permissionGrantedDialog_to_permissionLocationFragment"
+            app:destination="@id/permissionLocationFragment" />
+        <action
+            android:id="@+id/action_permissionGrantedDialog_to_permissionCameraFragment"
+            app:destination="@id/permissionCameraFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/greetingFragment"
+        android:name="com.example.alpha.ui.greeting.GreetingFragment"
+        android:label="fragment_greeting"
+        tools:layout="@layout/fragment_greeting" >
+        <action
+            android:id="@+id/action_greetingFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_greetingFragment_to_permissionLocationFragment"
+            app:destination="@id/permissionLocationFragment" />
+        <action
+            android:id="@+id/action_greetingFragment_to_permissionCameraFragment"
+            app:destination="@id/permissionCameraFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/codeGoogleActivity"
+        android:name="com.example.alpha.ui.barcodedetection_google.CodeGoogleActivity"
+        android:label="activity_code_google"
+        tools:layout="@layout/activity_code_google" />
+    <activity
+        android:id="@+id/liveBarcodeScanningActivity"
+        android:name="com.google.mlkit.md.LiveBarcodeScanningActivity"
+        android:label="LiveBarcodeScanningActivity" />
 </navigation>

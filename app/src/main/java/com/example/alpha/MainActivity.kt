@@ -1,10 +1,11 @@
 package com.example.alpha
 
-import android.content.pm.PackageManager
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,14 +13,17 @@ import androidx.navigation.ui.AppBarConfiguration.Builder
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.alpha.databinding.ActivityMainBinding
+import com.example.alpha.ui.permission.PermissionManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
     private var navView: BottomNavigationView? = null
     private var navController: NavController? = null
     private var materialToolbar: MaterialToolbar? = null
+    var prefs: SharedPreferences? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -36,37 +40,60 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(this, R.id.nav_host_fragment_activity_main)
         setupActionBarWithNavController(this, navController!!, appBarConfiguration)
         setupWithNavController(binding!!.navView, navController!!)
+        checkFirstRun()
     }
 
-    /**
-     * This function will check if the CAMERA permission has been granted.
-     * If so, it will call the function responsible to initialize the camera preview.
-     * Otherwise, it will raise an alert.
-     */
-    private fun checkIfCameraPermissionIsGranted() {
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
-            == PackageManager.PERMISSION_GRANTED) {
-            // Permission granted
+    private fun checkFirstRun() {
+        val PREFS_NAME = "MyPrefsFile"
+        val PREF_VERSION_CODE_KEY = "version_code"
+        val DOESNT_EXIST = -1
+
+        // Get current version code
+        val currentVersionCode = BuildConfig.VERSION_CODE
+
+        // Get saved version code
+        val prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        val savedVersionCode = prefs.getInt(PREF_VERSION_CODE_KEY, DOESNT_EXIST)
+
+        // Check for first run or upgrade
+        if (savedVersionCode == DOESNT_EXIST) {
+
+            // TODO This is a new install (or the user cleared the shared preferences)
+            navController?.navigate(R.id.greetingFragment)
+        } else if (currentVersionCode == savedVersionCode) {
+            // This is just a normal run
             return
-        } else {
-            navController?.navigate(R.id.permissionCameraFragment)
+        } else if (currentVersionCode > savedVersionCode) {
+            navController?.navigate(R.id.greetingFragment)
+            // TODO This is an upgrade
         }
+
+        // Update the shared preferences with the current version code
+        prefs.edit().putInt(PREF_VERSION_CODE_KEY, currentVersionCode).apply()
     }
 
-    /**
-     * This function will check if the CAMERA permission has been granted.
-     * If so, it will call the function responsible to initialize the camera preview.
-     * Otherwise, it will raise an alert.
-     */
-    private fun checkIfLocationPermissionIsGranted() {
-        if (ContextCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED) {
-            // Permission granted
-            return
+    private val listener = NavController.OnDestinationChangedListener { _, nd: NavDestination, _->
+        // react on change
+        // you can check destination.id or destination.label and act based on that
+        if(nd.id==R.id.greetingFragment||
+            nd.id==R.id.permissionCameraFragment||
+            nd.id==R.id.permissionLocationFragment||
+            nd.id==R.id.permissionGrantedDialog) {
+            materialToolbar?.visibility = View.GONE
+            navView?.visibility = View.GONE
         } else {
-            navController?.navigate(R.id.permissionLocationFragment)
+            materialToolbar?.visibility = View.VISIBLE
+            navView?.visibility = View.VISIBLE
         }
+    }
+    override fun onResume() {
+        super.onResume()
+        navController?.addOnDestinationChangedListener(listener)
+    }
+
+    override fun onPause() {
+        navController?.removeOnDestinationChangedListener(listener)
+        super.onPause()
     }
 
 }

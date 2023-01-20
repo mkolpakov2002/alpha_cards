@@ -1,37 +1,39 @@
-package com.example.alpha.ui.home;
+package com.example.alpha.ui.home
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import com.example.alpha.R
+import com.example.alpha.databinding.FragmentHomeBinding
+import com.google.android.material.button.MaterialButton
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+class HomeFragment : Fragment() {
+    private var binding: FragmentHomeBinding? = null
+    private var materialButton: MaterialButton? = null
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val root: View = binding!!.root
+        val textView = binding!!.textHome
+        homeViewModel.text.observe(viewLifecycleOwner) { text: String? -> textView.text = text }
 
-import com.example.alpha.databinding.FragmentHomeBinding;
+        materialButton = binding!!.scanCard
 
-public class HomeFragment extends Fragment {
-
-    private FragmentHomeBinding binding;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
-
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+        materialButton!!.setOnClickListener {
+            Navigation.findNavController(materialButton!!).navigate(R.id.liveBarcodeScanningActivity)
+        }
+        return root
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
