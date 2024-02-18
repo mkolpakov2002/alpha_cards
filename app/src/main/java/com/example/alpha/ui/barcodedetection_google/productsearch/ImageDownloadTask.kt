@@ -29,6 +29,7 @@ import java.net.URL
 internal class ImageDownloadTask(private val imageView: ImageView, private val maxImageWidth: Int) :
     AsyncTask<String, Void, Bitmap>() {
 
+    @Deprecated("Deprecated in Java")
     override fun doInBackground(vararg urls: String): Bitmap? {
         if (TextUtils.isEmpty(urls[0])) {
             return null
@@ -50,6 +51,7 @@ internal class ImageDownloadTask(private val imageView: ImageView, private val m
         return bitmap
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onPostExecute(result: Bitmap?) {
         result?.let {
             imageView.setImageBitmap(result)

@@ -142,6 +142,7 @@ class LiveObjectDetectionActivity : AppCompatActivity(), OnClickListener {
         searchEngine?.shutdown()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (bottomSheetBehavior?.state != BottomSheetBehavior.STATE_HIDDEN) {
             bottomSheetBehavior?.setState(BottomSheetBehavior.STATE_HIDDEN)

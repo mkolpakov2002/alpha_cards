@@ -129,6 +129,7 @@ class StaticObjectDetectionActivity : AppCompatActivity(), View.OnClickListener 
         searchEngine?.shutdown()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == Utils.REQUEST_CODE_PHOTO_LIBRARY && resultCode == Activity.RESULT_OK) {
             data?.data?.let(::detectObjects)
@@ -137,6 +138,7 @@ class StaticObjectDetectionActivity : AppCompatActivity(), View.OnClickListener 
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (bottomSheetBehavior?.state != BottomSheetBehavior.STATE_HIDDEN) {
             bottomSheetBehavior?.setState(BottomSheetBehavior.STATE_HIDDEN)
