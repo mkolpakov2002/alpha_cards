@@ -34,12 +34,10 @@ public class RxPermissionsFragment extends Fragment {
         setRetainInstance(true);
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     void requestPermissions(@NonNull String[] permissions) {
         requestPermissions(permissions, PERMISSIONS_REQUEST_CODE);
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
@@ -71,7 +69,6 @@ public class RxPermissionsFragment extends Fragment {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     boolean isGranted(String permission) {
         final FragmentActivity fragmentActivity = getActivity();
         if (fragmentActivity == null) {
@@ -80,7 +77,6 @@ public class RxPermissionsFragment extends Fragment {
         return fragmentActivity.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     boolean isRevoked(String permission) {
         final FragmentActivity fragmentActivity = getActivity();
         if (fragmentActivity == null) {

@@ -37,19 +37,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.alpha.ui.map.MapFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_map" >
-        <action
-            android:id="@+id/action_navigation_dashboard_to_navigation_home"
-            app:destination="@id/navigation_home" />
-        <action
-            android:id="@+id/action_navigation_dashboard_to_permissionLocationFragment"
-            app:destination="@id/permissionLocationFragment" />
-    </fragment>
-
-    <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.alpha.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
@@ -63,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/permissionLocationFragment"
-        android:name="com.example.alpha.ui.permission_location.PermissionLocationFragment"
+        android:name="com.example.alpha.ui.permissions.permission_location.PermissionLocationFragment"
         android:label="fragment_permission_location"
         tools:layout="@layout/fragment_permission_location" >
         <action
@@ -87,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/permissionCameraFragment"
-        android:name="com.example.alpha.ui.permission_camera.PermissionCameraFragment"
+        android:name="com.example.alpha.ui.permissions.permission_camera.PermissionCameraFragment"
         android:label="fragment_permission_camera"
         tools:layout="@layout/fragment_permission_camera" >
         <action
@@ -110,7 +97,7 @@
         tools:layout="@layout/activity_splash" />
     <dialog
         android:id="@+id/permissionGrantedDialog"
-        android:name="com.example.alpha.ui.permission.PermissionGrantedDialog"
+        android:name="com.example.alpha.ui.permissions.permission.PermissionGrantedDialog"
         android:label="PermissionGrantedDialog"
         tools:layout="@layout/dialog_permission_granted">
         <action

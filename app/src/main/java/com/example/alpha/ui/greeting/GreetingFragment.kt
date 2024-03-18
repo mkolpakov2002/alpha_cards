@@ -1,19 +1,13 @@
 package com.example.alpha.ui.greeting
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.navigation.Navigation
 import com.example.alpha.R
 import com.example.alpha.databinding.FragmentGreetingBinding
-import com.example.alpha.databinding.FragmentPermissionCameraBinding
-import com.example.alpha.ui.permission.PermissionManager.checkIfCameraPermissionIsGranted
-import com.example.alpha.ui.permission.PermissionManager.checkIfLocationPermissionIsGranted
+import com.example.alpha.ui.permissions.permission.PermissionManager.checkIfCameraPermissionIsGranted
 import com.google.android.material.button.MaterialButton
 
 class GreetingFragment : Fragment() {

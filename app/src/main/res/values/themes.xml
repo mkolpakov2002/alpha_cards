@@ -216,6 +216,7 @@
 
     <style name="ButtonInvertedDeepLink" parent="@style/ButtonBaseDeepLink">
         <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="iconTint">?attr/colorAccent</item>
         <item name="backgroundTint">?attr/backgroundColorSecondary</item>
     </style>
 

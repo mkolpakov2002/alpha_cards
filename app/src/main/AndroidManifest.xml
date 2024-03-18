@@ -38,9 +38,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.barcodedetection_journey.CodeGitJourneyActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/BaseAlfaTheme" />

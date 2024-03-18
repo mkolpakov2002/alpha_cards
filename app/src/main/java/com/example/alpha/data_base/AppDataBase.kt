@@ -1,19 +1,32 @@
-package com.example.alpha.data_base;
+package com.example.alpha.data_base
 
 
-import androidx.room.Database;
-import androidx.room.RoomDatabase;
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import com.example.alpha.data.api.Building
+import com.example.alpha.data.api.Cell
+import com.example.alpha.data.api.Element
+import com.example.alpha.data.api.ElementGroup
+import com.example.alpha.data.api.Equipment
+import com.example.alpha.data.api.Laboratory
+import com.example.alpha.data.api.Room
+import com.example.alpha.data.api.Shelf
+import com.example.alpha.data.api.Terminal
+import com.example.alpha.data.api.User
 
-import com.example.alpha.data.Card;
-import com.example.alpha.data.Location;
-import com.example.alpha.data.Shop;
-import com.example.alpha.data.User;
-
-@Database(entities = {Card.class , Shop.class, Location.class, User.class}, version = 3)
-public abstract class AppDataBase extends RoomDatabase {
-    public abstract CardDao getCardDao();
-    public abstract ShopDao getShopDao();
-    public abstract LocationDao getLocationDao();
-    public abstract UserDao getUserDao();
-
+@Database(entities = [com.example.alpha.data.api.Equipment::class, com.example.alpha.data.api.Element::class, com.example.alpha.data.api.ElementGroup::class,
+    com.example.alpha.data.api.Laboratory::class, Building::class, com.example.alpha.data.api.Room::class, com.example.alpha.data.api.Shelf::class,
+    com.example.alpha.data.api.Cell::class, com.example.alpha.data.api.Terminal::class, com.example.alpha.data.api.User::class], version = 1)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun equipmentDao(): EquipmentDao
+    abstract fun elementDao(): ElementDao
+    abstract fun elementGroupDao(): ElementGroupDao
+    abstract fun requestDao(): RequestDao
+    abstract fun laboratoryDao(): LaboratoryDao
+    abstract fun buildingDao(): BuildingDao
+    abstract fun roomDao(): RoomDao
+    abstract fun shelfDao(): ShelfDao
+    abstract fun cellDao(): CellDao
+    abstract fun terminalDao(): TerminalDao
+    abstract fun userDao(): UserDao
 }

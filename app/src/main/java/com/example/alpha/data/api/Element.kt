@@ -1,14 +1,15 @@
 package com.example.alpha.data.api
 
-import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.Entity
 
-@Entity(tableName = "users")
-data class User(
+@Entity(tableName = "elements")
+data class Element(
     @PrimaryKey val id: Int,
     val name: String,
-    val entity: String,
-    val scope: List<String>,
+    val equipmentId: Int,
+    val statusId: Int,
+    val labId: Int,
     val created: String,
     val updated: String
 )
