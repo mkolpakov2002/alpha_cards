@@ -46,8 +46,9 @@ class PermissionLocationFragment : Fragment() {
                 .subscribe { granted ->
                     if (!granted.granted) { // Always true pre-M
                         Toast.makeText(requireActivity(), "Разрешение не дано.", Toast.LENGTH_SHORT).show()
+                    } else{
+                        Navigation.findNavController(binding!!.root).navigate(R.id.authFragment)
                     }
-                    Navigation.findNavController(binding!!.root).navigate(R.id.navigation_home)
                 })
         }
 

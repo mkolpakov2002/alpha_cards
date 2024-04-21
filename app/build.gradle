@@ -1,13 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
+apply plugin: 'io.realm.kotlin'
+apply plugin: 'org.jetbrains.kotlin.plugin.serialization'
 
 android {
     namespace 'com.example.alpha'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.alpha"
+        applicationId "ru.hse.miem.inventlab"
         minSdk 28
         targetSdk 34
         versionCode 1
@@ -45,7 +47,7 @@ android {
         jvmTarget = '17'
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.2'
+        kotlinCompilerExtensionVersion '1.5.11'
     }
     packagingOptions {
         resources {
@@ -74,7 +76,7 @@ dependencies {
     implementation 'androidx.activity:activity-compose:1.8.2'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.compose.material3:material3:1.2.0'
+    implementation 'androidx.compose.material3:material3:1.2.1'
     implementation 'com.google.ar.sceneform:core:1.17.1'
     implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.17.1'
     implementation 'androidx.core:core-ktx:1.12.0'
@@ -149,4 +151,29 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
+
+    def ktor_version = "2.3.9"
+    implementation ("io.ktor:ktor-client-core:$ktor_version")
+    implementation("io.ktor:ktor-client-android:$ktor_version")
+    implementation ("io.ktor:ktor-client-json:$ktor_version")
+    implementation ("io.ktor:ktor-client-serialization:$ktor_version")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+    implementation("io.ktor:ktor-client-auth:$ktor_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("io.ktor:ktor-client-cio:$ktor_version")
+    implementation("io.ktor:ktor-client-okhttp:$ktor_version")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
+    implementation("io.ktor:ktor-client-logging:$ktor_version")
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3'
+
+    implementation 'io.realm.kotlin:library-base:1.14.1'
+    implementation 'io.realm.kotlin:library-sync:1.14.1'// If using Device Sync
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0' // If using coroutines with the SDK
+
+    implementation("org.slf4j:slf4j-simple:2.0.9")
+
+    implementation 'com.jakewharton.timber:timber:5.0.1'
 }

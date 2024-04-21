@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.alpha.R
 import com.example.alpha.databinding.FragmentPermissionCameraBinding
 import com.example.alpha.rxpermissions3.RxPermissions
-import com.example.alpha.ui.permissions.permission.PermissionManager.checkIfLocationPermissionIsGranted
+import com.example.alpha.ui.permissions.permission.PermissionManager.Companion.checkIfLocationPermissionIsGranted
 import com.google.android.material.button.MaterialButton
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
@@ -41,11 +42,9 @@ class PermissionCameraFragment : Fragment() {
                 .subscribe { granted ->
                     if (!granted) { // Always true pre-M
                         Toast.makeText(requireActivity(), "Разрешение не дано.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Navigation.findNavController(binding!!.root).navigate(R.id.permissionLocationFragment)
                     }
-                    checkIfLocationPermissionIsGranted(
-                        requireContext(), binding!!.root,
-                        R.id.navigation_home
-                    )
                 })
         }
 
@@ -58,7 +57,4 @@ class PermissionCameraFragment : Fragment() {
         binding = null
     }
 
-    override fun onResume() {
-        super.onResume()
-        }
-    }
+}

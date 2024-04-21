@@ -26,19 +26,5 @@ class PermissionGrantedDialog: DialogFragment() {
         return builder.create()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 
 }

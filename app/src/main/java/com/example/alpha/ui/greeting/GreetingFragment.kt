@@ -5,19 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.example.alpha.R
 import com.example.alpha.databinding.FragmentGreetingBinding
-import com.example.alpha.ui.permissions.permission.PermissionManager.checkIfCameraPermissionIsGranted
+import com.example.alpha.ui.permissions.permission.PermissionManager.Companion.checkIfAuthIsGranted
+import com.example.alpha.ui.permissions.permission.PermissionManager.Companion.checkIfCameraPermissionIsGranted
+import com.example.alpha.ui.permissions.permission.PermissionManager.Companion.checkIfLocationPermissionIsGranted
 import com.google.android.material.button.MaterialButton
 
 class GreetingFragment : Fragment() {
 
-    private var binding: FragmentGreetingBinding? = null
-    private var materialButtonNext: MaterialButton? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var binding: FragmentGreetingBinding
+    private lateinit var materialButtonNext: MaterialButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,19 +28,19 @@ class GreetingFragment : Fragment() {
             false
         )
 
-        materialButtonNext = binding!!.button
+        materialButtonNext = binding.button
 
-        materialButtonNext!!.setOnClickListener{
-            checkIfCameraPermissionIsGranted(requireContext(), binding!!.root,
-                R.id.navigation_home)
+        materialButtonNext.setOnClickListener{
+            if(!checkIfCameraPermissionIsGranted(requireContext()))
+                Navigation.findNavController(binding.root).navigate(R.id.permissionCameraFragment)
+            else if(!checkIfLocationPermissionIsGranted(requireContext()))
+                Navigation.findNavController(binding.root).navigate(R.id.permissionLocationFragment)
+            else if(!checkIfAuthIsGranted(requireContext()))
+                Navigation.findNavController(binding.root).navigate(R.id.authFragment)
+            else
+                Navigation.findNavController(binding.root).navigate(R.id.navigation_home)
         }
 
-        return binding!!.root
+        return binding.root
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-    }
-
 }

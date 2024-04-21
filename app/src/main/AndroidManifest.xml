@@ -15,8 +15,10 @@
     <uses-permission android:name="android.permission.CAMERA" /> <!-- Include this permission any time your app needs location information. -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Include only if your app benefits from precise location access. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -40,12 +42,13 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/BaseAlfaTheme" />
-
-        <activity
-            android:name="com.google.mlkit.md.LiveObjectDetectionActivity"
-            android:exported="false"
-            android:screenOrientation="portrait">
+            android:theme="@style/BaseAlfaTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="myapp" android:host="auth" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -53,18 +56,6 @@
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/BlueTheme">
-        </activity>
-
-        <activity
-            android:name="com.google.mlkit.md.StaticObjectDetectionActivity"
-            android:exported="false"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name="com.google.mlkit.md.CustomModelObjectDetectionActivity"
-            android:exported="false"
-            android:screenOrientation="portrait">
         </activity>
 
         <activity
