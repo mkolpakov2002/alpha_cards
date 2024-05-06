@@ -22,19 +22,22 @@ import android.content.Intent
 import android.hardware.Camera
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
-import android.view.Window
-import androidx.appcompat.app.AppCompatActivity
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.alpha.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.common.base.Objects
-import com.google.mlkit.md.barcodedetection.BarcodeField
 import com.google.mlkit.md.barcodedetection.BarcodeProcessor
-import com.google.mlkit.md.barcodedetection.BarcodeResultFragment
 import com.google.mlkit.md.camera.CameraSource
 import com.google.mlkit.md.camera.CameraSourcePreview
 import com.google.mlkit.md.camera.GraphicOverlay
@@ -44,7 +47,7 @@ import com.google.mlkit.md.settings.SettingsActivity
 import java.io.IOException
 
 /** Demonstrates the barcode scanning workflow using camera preview.  */
-class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
+class LiveBarcodeScanningFragment : Fragment(), OnClickListener {
 
     private var cameraSource: CameraSource? = null
     private var preview: CameraSourcePreview? = null
@@ -57,33 +60,34 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
     private var currentWorkflowState: WorkflowState? = null
     private var buttonOpenFile: MaterialButton? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window.requestFeature(Window.FEATURE_ACTION_BAR)
-        supportActionBar?.hide()
-        setContentView(R.layout.activity_live_barcode)
-        preview = findViewById(R.id.camera_preview)
-        graphicOverlay = findViewById<GraphicOverlay>(R.id.camera_preview_graphic_overlay).apply {
-            setOnClickListener(this@LiveBarcodeScanningActivity)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_live_barcode, container, false)
+
+        preview = view.findViewById(R.id.camera_preview)
+        graphicOverlay = view.findViewById<GraphicOverlay>(R.id.camera_preview_graphic_overlay).apply {
+            setOnClickListener(this@LiveBarcodeScanningFragment)
             cameraSource = CameraSource(this)
         }
 
-        promptChip = findViewById(R.id.bottom_prompt_chip)
+        promptChip = view.findViewById(R.id.bottom_prompt_chip)
         promptChipAnimator =
-            (AnimatorInflater.loadAnimator(this, R.animator.bottom_prompt_chip_enter) as AnimatorSet).apply {
+            (AnimatorInflater.loadAnimator(requireContext(), R.animator.bottom_prompt_chip_enter) as AnimatorSet).apply {
                 setTarget(promptChip)
             }
 
-        findViewById<View>(R.id.bottom_promt_open_gallery).setOnClickListener(this)
-
-        findViewById<View>(R.id.close_button).setOnClickListener(this)
-        flashButton = findViewById<View>(R.id.flash_button).apply {
-            setOnClickListener(this@LiveBarcodeScanningActivity)
+        view.findViewById<View>(R.id.close_button).setOnClickListener(this)
+        flashButton = view.findViewById<View>(R.id.flash_button).apply {
+            setOnClickListener(this@LiveBarcodeScanningFragment)
         }
-        settingsButton = findViewById<View>(R.id.settings_button).apply {
-            setOnClickListener(this@LiveBarcodeScanningActivity)
+        settingsButton = view.findViewById<View>(R.id.settings_button).apply {
+            setOnClickListener(this@LiveBarcodeScanningFragment)
         }
 
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setUpWorkflowModel()
     }
 
@@ -95,11 +99,6 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
         currentWorkflowState = WorkflowState.NOT_STARTED
         cameraSource?.setFrameProcessor(BarcodeProcessor(graphicOverlay!!, workflowModel!!))
         workflowModel?.setWorkflowState(WorkflowState.DETECTING)
-    }
-
-    override fun onPostResume() {
-        super.onPostResume()
-        BarcodeResultFragment.dismiss(supportFragmentManager)
     }
 
     override fun onPause() {
@@ -116,11 +115,7 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.close_button -> onBackPressed()
-            R.id.bottom_promt_open_gallery -> {
-                finish()
-//                startActivity(Intent(this,StaticObjectDetectionActivity::class.java))
-            }
+            R.id.close_button -> navigateBackToItemFragment()
             R.id.flash_button -> {
                 flashButton?.let {
                     if (it.isSelected) {
@@ -134,7 +129,7 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
             }
             R.id.settings_button -> {
                 settingsButton?.isEnabled = false
-                startActivity(Intent(this, SettingsActivity::class.java))
+                startActivity(Intent(requireContext(), SettingsActivity::class.java))
             }
         }
     }
@@ -168,7 +163,7 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
 
         // Observes the workflow state changes, if happens, update the overlay view indicators and
         // camera preview state.
-        workflowModel!!.workflowState.observe(this, Observer { workflowState ->
+        workflowModel!!.workflowState.observe(viewLifecycleOwner, Observer { workflowState ->
             if (workflowState == null || Objects.equal(currentWorkflowState, workflowState)) {
                 return@Observer
             }
@@ -207,16 +202,24 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
             }
         })
 
-        workflowModel?.detectedBarcode?.observe(this, Observer { barcode ->
+        workflowModel?.detectedBarcode?.observe(viewLifecycleOwner, Observer { barcode ->
             if (barcode != null) {
-                val barcodeFieldList = ArrayList<BarcodeField>()
-                barcodeFieldList.add(BarcodeField(getString(R.string.card_id_label), barcode.rawValue ?: ""))
-                BarcodeResultFragment.show(supportFragmentManager, barcodeFieldList)
+                val result = Bundle().apply {
+                    putString("barcode", barcode.rawValue)
+                    Toast.makeText(requireContext(),"Barcode: ${barcode.rawValue}", Toast.LENGTH_SHORT).show()
+                }
+                setFragmentResult(REQUEST_KEY, result)
+                navigateBackToItemFragment()
             }
         })
     }
 
+    private fun navigateBackToItemFragment() {
+        findNavController().navigateUp()
+    }
+
     companion object {
-        private const val TAG = "LiveBarcodeActivity"
+        private const val TAG = "LiveBarcodeFragment"
+        const val REQUEST_KEY = "barcode_request_key"
     }
 }

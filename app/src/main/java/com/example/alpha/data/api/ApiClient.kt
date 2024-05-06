@@ -1,11 +1,15 @@
 package com.example.alpha.data.api
 
 import android.util.Log
+import com.example.alpha.App
 import com.example.alpha.BuildConfig
+import com.example.alpha.ui.permissions.permission.PermissionManager
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.DefaultRequest
+import io.ktor.client.plugins.HttpResponseValidator
 import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.plugins.ResponseException
 import io.ktor.client.plugins.auth.Auth
 import io.ktor.client.plugins.auth.providers.BearerTokens
 import io.ktor.client.plugins.auth.providers.bearer
@@ -24,23 +28,25 @@ import io.ktor.client.request.post
 import io.ktor.client.request.request
 import io.ktor.client.request.setBody
 import io.ktor.client.request.url
+import io.ktor.client.statement.HttpResponsePipeline
 import io.ktor.client.statement.bodyAsText
 import io.ktor.client.utils.EmptyContent.contentType
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
+import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
+import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import timber.log.Timber
 
-class ApiClient(private val baseUrl: String = "https://1789.nas.helow19274.ru", private val token: String = "testToken") {
+class ApiClient(private val baseUrl: String = "https://1789.nas.helow19274.ru", private val token: String) {
 
     private val client = HttpClient {
-//        expectSuccess = true
-//        install(HttpTimeout) {
-//            requestTimeoutMillis = 1000
-//        }
+        install(HttpTimeout) {
+            requestTimeoutMillis = 1000
+        }
         install(Logging) {
             logger = Logger.DEFAULT
             level = LogLevel.ALL
@@ -51,16 +57,15 @@ class ApiClient(private val baseUrl: String = "https://1789.nas.helow19274.ru", 
 
         install(DefaultRequest) {
             header("accept", "application/json")
-            header(HttpHeaders.Authorization, "Bearer ${token}")
+            header("Authorization", "Bearer $token")
         }
-//        install(Auth) {
-//            bearer {
-//                loadTokens {
-//                    // Load tokens from a local storage and return them as the 'BearerTokens' instance
-//                    BearerTokens(testToken, testToken)
-//                }
-//            }
-//        }
+        HttpResponseValidator {
+            validateResponse { response ->
+                if (response.status == HttpStatusCode.Unauthorized) {
+                    PermissionManager.setAuthIsGranted(false, null)
+                }
+            }
+        }
     }
 
     suspend fun getHardwareList(page: Int, perPage: Int): HardwareListResponse {
@@ -216,7 +221,7 @@ class ApiClient(private val baseUrl: String = "https://1789.nas.helow19274.ru", 
         return response.body()
     }
 
-    suspend fun deleteSection(id: Int): SectionDeleteResponse {
+    suspend fun deleteSectionItem(id: Int): SectionDeleteResponse {
         val response = client.delete("$baseUrl/section/$id")
         return response.body()
     }
@@ -227,19 +232,12 @@ class ApiClient(private val baseUrl: String = "https://1789.nas.helow19274.ru", 
         filter: List<String>? = null,
         sort: List<String>? = null
     ): RoomListResponse {
-        val request = HttpRequestBuilder().apply {
-            method = HttpMethod.Get
-            url("$baseUrl/room")
+        val response = client.get("$baseUrl/room") {
             parameter("page", page)
             parameter("per_page", perPage)
             filter?.let { parameter("filter_", it) }
             sort?.let { parameter("sort", it) }
         }
-        Log.d("API", "Outgoing request: ${request.build().body}")
-        val response = client.request(request)
-        Log.d("ApiClient", "getRoomList: $response")
-        val body = response.bodyAsText()
-        Log.d("ApiClient", "getRoomList: $body")
         return response.body()
     }
 
@@ -261,6 +259,129 @@ class ApiClient(private val baseUrl: String = "https://1789.nas.helow19274.ru", 
             contentType(ContentType.Application.Json)
             setBody(request)
         }
+        return response.body()
+    }
+
+    suspend fun getPlaceItemList(
+        page: Int = 1,
+        perPage: Int = 50,
+        filter: List<String>? = null,
+        sort: List<String>? = null
+    ): PlaceListResponse {
+        val response = client.get("$baseUrl/place") {
+            parameter("page", page)
+            parameter("per_page", perPage)
+            filter?.let { parameter("filter_", it) }
+            sort?.let { parameter("sort", it) }
+        }
+        return response.body()
+    }
+
+    suspend fun createPlaceItem(request: PlaceCreateRequest): PlaceCreateResponse {
+        val response = client.post("$baseUrl/place") {
+            contentType(ContentType.Application.Json)
+            setBody(request)
+        }
+        return response.body()
+    }
+
+    suspend fun getPlaceItemById(id: Int): PlaceResponse {
+        val response = client.get("$baseUrl/place/$id")
+        return response.body()
+    }
+
+    suspend fun updatePlaceItem(id: Int, request: PlaceUpdateRequest): PlaceUpdateResponse {
+        val response = client.patch("$baseUrl/place/$id") {
+            contentType(ContentType.Application.Json)
+            setBody(request)
+        }
+        return response.body()
+    }
+
+    suspend fun deletePlaceItem(id: Int): PlaceDeleteResponse {
+        val response = client.delete("$baseUrl/place/$id")
+        return response.body()
+    }
+
+    suspend fun getLabItemList(
+        page: Int = 1,
+        perPage: Int = 50,
+        filter: List<String>? = null,
+        sort: List<String>? = null
+    ): LabListResponse {
+        val response = client.get("$baseUrl/lab") {
+            parameter("page", page)
+            parameter("per_page", perPage)
+            filter?.let { parameter("filter_", it) }
+            sort?.let { parameter("sort", it) }
+        }
+        return response.body()
+    }
+
+    suspend fun createLabItem(request: LabCreateRequest): LabCreateResponse {
+        val response = client.post("$baseUrl/lab") {
+            contentType(ContentType.Application.Json)
+            setBody(request)
+        }
+        return response.body()
+    }
+
+    suspend fun getLabItemById(id: Int): LabResponse {
+        val response = client.get("$baseUrl/lab/$id")
+        return response.body()
+    }
+
+    suspend fun updateLabItem(id: Int, request: LabUpdateRequest): LabUpdateResponse {
+        val response = client.patch("$baseUrl/lab/$id") {
+            contentType(ContentType.Application.Json)
+            setBody(request)
+        }
+        return response.body()
+    }
+
+    suspend fun deleteLabItem(id: Int): LabDeleteResponse {
+        val response = client.delete("$baseUrl/lab/$id")
+        return response.body()
+    }
+
+    suspend fun getBuildingItemList(
+        page: Int = 1,
+        perPage: Int = 50,
+        filter: List<String>? = null,
+        sort: List<String>? = null
+    ): BuildingListResponse {
+        val response = client.get("$baseUrl/building") {
+            parameter("page", page)
+            parameter("per_page", perPage)
+            filter?.let { parameter("filter_", it) }
+            sort?.let { parameter("sort", it) }
+        }
+        return response.body()
+    }
+
+    suspend fun createBuildingItem(request: BuildingCreateRequest): BuildingCreateResponse {
+        val response = client.post("$baseUrl/building") {
+            contentType(ContentType.Application.Json)
+            setBody(request)
+        }
+        return response.body()
+    }
+
+    suspend fun getBuildingItemById(id: Int): BuildingResponse {
+        val response = client.get("$baseUrl/building/$id")
+        return response.body()
+    }
+
+    suspend fun updateBuildingItem(id: Int, request: BuildingUpdateRequest): BuildingUpdateResponse {
+        val response = client.patch("$baseUrl/building/$id") {
+            contentType(ContentType.Application.Json)
+            setBody(request)
+        }
+        return response.body()
+    }
+
+    suspend fun deleteBuildingItem(id: Int): BuildingDeleteResponse {
+        val response = client.delete("$baseUrl/building/$id")
         return response.body()
     }
 

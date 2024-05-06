@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.alpha.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="Домашняя страница"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_permissionLocationFragment"
@@ -23,20 +23,20 @@
             android:id="@+id/action_navigation_home_to_greetingFragment2"
             app:destination="@id/greetingFragment" />
         <action
-            android:id="@+id/action_navigation_home_to_liveBarcodeScanningActivity"
-            app:destination="@id/liveBarcodeScanningActivity" />
-        <action
             android:id="@+id/action_navigation_home_to_userProfileFragment"
             app:destination="@id/userProfileFragment" />
         <action
             android:id="@+id/action_navigation_home_to_authFragment"
             app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_labListFragment"
+            app:destination="@id/labListFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/permissionLocationFragment"
         android:name="com.example.alpha.ui.permissions.permission_location.PermissionLocationFragment"
-        android:label="fragment_permission_location"
+        android:label="Разрешения"
         tools:layout="@layout/fragment_permission_location" >
         <action
             android:id="@+id/action_permissionLocationFragment_to_permissionCameraFragment"
@@ -57,7 +57,7 @@
     <fragment
         android:id="@+id/permissionCameraFragment"
         android:name="com.example.alpha.ui.permissions.permission_camera.PermissionCameraFragment"
-        android:label="fragment_permission_camera"
+        android:label="Разрешение на камеру"
         tools:layout="@layout/fragment_permission_camera" >
         <action
             android:id="@+id/action_permissionCameraFragment_to_navigation_home"
@@ -110,10 +110,6 @@
             android:id="@+id/action_greetingFragment_to_authFragment"
             app:destination="@id/authFragment" />
     </fragment>
-    <activity
-        android:id="@+id/liveBarcodeScanningActivity"
-        android:name="com.google.mlkit.md.LiveBarcodeScanningActivity"
-        android:label="LiveBarcodeScanningActivity" />
     <fragment
         android:id="@+id/authFragment"
         android:name="com.example.alpha.ui.auth.AuthFragment"
@@ -125,9 +121,177 @@
     <fragment
         android:id="@+id/userProfileFragment"
         android:name="com.example.alpha.ui.profile.UserProfileFragment"
-        android:label="UserProfileFragment" >
+        android:label="Настройки профиля" >
         <action
             android:id="@+id/action_userProfileFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_buildingListFragment"
+            app:destination="@id/buildingListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomListFragment"
+        android:name="com.example.alpha.ui.api.room.RoomListFragment"
+        android:label="Комнаты" >
+        <argument
+            android:name="buildingId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_authFragment_to_navigation_home2"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_permissionLocationFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_authFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_home_to_authFragment"
+            app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_permissionCameraFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_greetingFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_home_to_greetingFragment2"
+            app:destination="@id/greetingFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_permissionCameraFragment"
+            app:destination="@id/permissionCameraFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_roomListFragment_to_labListFragment"
+            app:destination="@id/labListFragment" />
+        <action
+            android:id="@+id/action_roomListFragment_to_sectionListFragment"
+            app:destination="@id/sectionListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/buildingListFragment"
+        android:name="com.example.alpha.ui.api.building.BuildingListFragment"
+        android:label="Здания" >
+        <action
+            android:id="@+id/action_userProfileFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_authFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_greetingFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_home_to_permissionCameraFragment"
+            app:destination="@id/permissionCameraFragment" />
+        <action
+            android:id="@+id/action_permissionLocationFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_permissionCameraFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_home_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_authFragment_to_navigation_home2"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_home_to_greetingFragment2"
+            app:destination="@id/greetingFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_authFragment"
+            app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_buildingListFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hardwareListFragment"
+        android:name="com.example.alpha.ui.api.hardware.HardwareListFragment"
+        android:label="Оборудование" />
+    <fragment
+        android:id="@+id/labListFragment"
+        android:name="com.example.alpha.ui.api.lab.LabListFragment"
+        android:label="Лаборатории" >
+        <action
+            android:id="@+id/action_labListFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeListFragment"
+        android:name="com.example.alpha.ui.api.place.PlaceListFragment"
+        android:label="Ячейки хранения" >
+        <argument
+            android:name="sectionId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_placeListFragment_to_sectionListFragment"
+            app:destination="@id/sectionListFragment" />
+        <action
+            android:id="@+id/action_placeListFragment_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemListFragment"
+        android:name="com.example.alpha.ui.api.item.ItemListFragment"
+        android:label="Предметы" >
+        <argument
+            android:name="placeId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_itemListFragment_to_placeListFragment"
+            app:destination="@id/placeListFragment" />
+        <action
+            android:id="@+id/action_itemListFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sectionListFragment"
+        android:name="com.example.alpha.ui.api.section.SectionListFragment"
+        android:label="Секции" >
+        <argument
+            android:name="roomId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_sectionListFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
+        <action
+            android:id="@+id/action_sectionListFragment_to_placeListFragment"
+            app:destination="@id/placeListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/terminalListFragment"
+        android:name="com.example.alpha.ui.api.terminal.TerminalListFragment"
+        android:label="Терминалы" />
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.example.alpha.ui.api.item.ItemFragment"
+        android:label="Предмет" >
+        <argument
+            android:name="itemId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_itemFragment_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
+        <action
+            android:id="@+id/action_itemFragment_to_liveBarcodeScanningFragment"
+            app:destination="@id/liveBarcodeScanningFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/liveBarcodeScanningFragment"
+        android:name="com.google.mlkit.md.LiveBarcodeScanningFragment"
+        android:label="Сканирование" >
+        <action
+            android:id="@+id/action_liveBarcodeScanningFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
     </fragment>
 </navigation>

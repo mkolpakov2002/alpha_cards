@@ -31,11 +31,11 @@ class GreetingFragment : Fragment() {
         materialButtonNext = binding.button
 
         materialButtonNext.setOnClickListener{
-            if(!checkIfCameraPermissionIsGranted(requireContext()))
+            if(!checkIfCameraPermissionIsGranted())
                 Navigation.findNavController(binding.root).navigate(R.id.permissionCameraFragment)
-            else if(!checkIfLocationPermissionIsGranted(requireContext()))
+            else if(!checkIfLocationPermissionIsGranted())
                 Navigation.findNavController(binding.root).navigate(R.id.permissionLocationFragment)
-            else if(!checkIfAuthIsGranted(requireContext()))
+            else if(!checkIfAuthIsGranted())
                 Navigation.findNavController(binding.root).navigate(R.id.authFragment)
             else
                 Navigation.findNavController(binding.root).navigate(R.id.navigation_home)

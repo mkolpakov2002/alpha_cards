@@ -75,3 +75,39 @@ data class RoomCreateRequest(
 data class RoomUpdateRequest(
     val name: String
 )
+
+@Serializable
+data class PlaceCreateRequest(
+    val name: String,
+    val description: String,
+    val section: Int
+)
+
+@Serializable
+data class PlaceUpdateRequest(
+    val name: String,
+    val description: String
+)
+
+@Serializable
+data class LabCreateRequest(
+    val name: String
+)
+
+@Serializable
+data class LabUpdateRequest(
+    val name: String
+)
+
+@Serializable
+data class BuildingCreateRequest(
+    val name: String,
+    val address: String
+)
+
+@Serializable
+data class BuildingUpdateRequest(
+    val name: String,
+    val address: String
+)
+

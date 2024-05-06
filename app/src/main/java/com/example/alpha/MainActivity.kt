@@ -1,21 +1,19 @@
 package com.example.alpha
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
-import androidx.navigation.Navigator
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.AppBarConfiguration.Builder
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.alpha.databinding.ActivityMainBinding
+import com.example.alpha.ui.auth.AuthViewModel
 import com.example.alpha.ui.permissions.permission.PermissionManager.Companion.checkIsFirstRun
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     private var materialToolbar: MaterialToolbar? = null
     private lateinit var navController: NavController
 
+    private val authViewModel: AuthViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -34,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         materialToolbar = binding!!.materialToolbar
         setSupportActionBar(materialToolbar)
         navView = binding!!.navView
+        authViewModel.isAuthGranted.observe(this) {
+            if (!it) {
+                navController.navigate(R.id.authFragment)
+            }
+        }
     }
 
 
@@ -51,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkForGreeting() {
-        if (checkIsFirstRun(this)) {
+        if (checkIsFirstRun()) {
             navController.navigate(R.id.greetingFragment)
         } else {
             navController.navigate(R.id.navigation_home)
@@ -63,7 +68,8 @@ class MainActivity : AppCompatActivity() {
             nd.id==R.id.permissionCameraFragment||
             nd.id==R.id.permissionLocationFragment||
             nd.id==R.id.permissionGrantedDialog ||
-            nd.id==R.id.authFragment) {
+            nd.id==R.id.authFragment ||
+            nd.id==R.id.liveBarcodeScanningFragment) {
             materialToolbar?.visibility = View.GONE
             navView?.visibility = View.GONE
         } else {

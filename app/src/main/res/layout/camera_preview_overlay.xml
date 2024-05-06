@@ -23,15 +23,6 @@
         android:indeterminateTintMode="src_in"
         android:visibility="gone"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/bottom_promt_open_gallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/ButtonPrimary"
-        android:text="Сканировать из файла"
-        android:layout_marginBottom="64dp"
-        android:layout_gravity="bottom|center_horizontal"/>
-
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/product_search_button"
         android:textStyle="bold"

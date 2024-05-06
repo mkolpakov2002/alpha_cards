@@ -23,7 +23,8 @@
       android:layout_alignParentEnd="true"
       android:padding="@dimen/top_action_button_padding"
       android:contentDescription="@string/cd_settings_button"
-      app:srcCompat="@drawable/ic_settings_vd_white_24"/>
+      app:srcCompat="@drawable/ic_settings_vd_white_24"
+      android:visibility="invisible"/>
 
   <ImageView
       android:id="@+id/flash_button"

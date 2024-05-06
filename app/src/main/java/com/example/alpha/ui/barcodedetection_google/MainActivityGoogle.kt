@@ -104,7 +104,7 @@ class MainActivityGoogle : AppCompatActivity() {
                             activity.startActivity(Intent(activity, LiveObjectDetectionActivity::class.java))
                         DetectionMode.ODT_STATIC -> Utils.openImagePicker(activity)
                         DetectionMode.BARCODE_LIVE ->
-                            activity.startActivity(Intent(activity, LiveBarcodeScanningActivity::class.java))
+                            activity.startActivity(Intent(activity, LiveBarcodeScanningFragment::class.java))
                         DetectionMode.CUSTOM_MODEL_LIVE ->
                             activity.startActivity(Intent(activity, CustomModelObjectDetectionActivity::class.java))
                     }

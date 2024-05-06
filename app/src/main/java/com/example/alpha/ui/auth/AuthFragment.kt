@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.alpha.R
+import com.example.alpha.data.Repository
 import com.example.alpha.data.api.AuthResponse
 import com.example.alpha.data.api.AuthResult
 import com.example.alpha.databinding.FragmentAuthBinding
@@ -31,7 +32,6 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 
 
@@ -97,16 +97,17 @@ class AuthFragment : Fragment() {
         if (code != null) {
             CoroutineScope(Dispatchers.Main).launch {
                 authViewModel.setAuthResult(null)
-                setAuthIsGranted(requireContext(), false)
+                setAuthIsGranted(false)
                 val authResponse = handleAuthorizationResponse(code)
                 if(authResponse.user.user_type == 1) {
                     refreshWebView(message = "Authorization failed. Student account is not allowed.")
                 } else {
-                    val jwtToken = authResponse.jwt_token
+                    val jwtToken = authResponse.access_token
                     val user = authResponse.user
                     val authResult = AuthResult(jwtToken, user)
                     authViewModel.setAuthResult(authResult)
-                    setAuthIsGranted(requireContext(), true)
+                    setAuthIsGranted( true, jwtToken)
+                    Repository.getInstance(jwtToken).saveUser(user)
                     Navigation.findNavController(binding.root).navigate(R.id.navigation_home)
                 }
             }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -36,6 +37,9 @@ class UserProfileFragment : Fragment() {
         binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.title = "Настройки профиля"
+
         nameTextView = binding.nameTextView
         emailTextView = binding.emailTextView
         phoneTextView = binding.phoneTextView
@@ -65,14 +69,14 @@ class UserProfileFragment : Fragment() {
     fun updateUserProfile(user: User) {
         nameTextView.text = user.name
         emailTextView.text = user.email
-        phoneTextView.text = user.phone ?: "No phone number"
+        phoneTextView.text = user.phone ?: "Без номера телефона"
 
         val userType = when (user.user_type) {
-            1 -> "Student"
-            2 -> "Teacher"
-            else -> "Admin"
+            1 -> "Студент"
+            2 -> "Сотрудник"
+            else -> "Администратор"
         }
-        userTypeTextView.text = "User Type: $userType"
+        userTypeTextView.text = "Тип пользователя: $userType"
     }
 
 }

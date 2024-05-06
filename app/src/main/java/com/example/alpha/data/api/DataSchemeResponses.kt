@@ -1,11 +1,13 @@
 package com.example.alpha.data.api
 
+import androidx.room.Entity
 import kotlinx.serialization.Serializable
 
+@Entity
 @Serializable
 data class AuthResponse(
     val user: User,
-    val jwt_token: String
+    val access_token: String
 )
 
 @Serializable
@@ -212,4 +214,127 @@ data class RoomUpdateResponse(
     val type: Int,
     val created: String,
     val updated: String
+)
+
+@Serializable
+data class PlaceListResponse(
+    val page: Int,
+    val per_page: Int,
+    val total_pages: Int,
+    val total_items: Int,
+    val result: List<PlaceItem>
+)
+
+@Serializable
+data class PlaceCreateResponse(
+    val name: String,
+    val description: String,
+    val section: Int,
+    val created: String,
+    val updated: String,
+    val id: Int
+)
+
+@Serializable
+data class PlaceResponse(
+    val name: String,
+    val description: String,
+    val section: Int,
+    val created: String,
+    val updated: String,
+    val id: Int
+)
+
+@Serializable
+data class PlaceUpdateResponse(
+    val name: String,
+    val description: String,
+    val section: Int,
+    val created: String,
+    val updated: String,
+    val id: Int
+)
+
+@Serializable
+data class PlaceDeleteResponse(
+    val detail: String
+)
+
+@Serializable
+data class LabListResponse(
+    val page: Int,
+    val per_page: Int,
+    val total_pages: Int,
+    val total_items: Int,
+    val result: List<LabItem>
+)
+
+@Serializable
+data class LabCreateResponse(
+    val name: String,
+    val created: String,
+    val updated: String,
+    val id: Int
+)
+
+@Serializable
+data class LabResponse(
+    val name: String,
+    val created: String,
+    val updated: String,
+    val id: Int
+)
+
+@Serializable
+data class LabUpdateResponse(
+    val name: String,
+    val created: String,
+    val updated: String,
+    val id: Int
+)
+
+@Serializable
+data class LabDeleteResponse(
+    val detail: String
+)
+
+@Serializable
+data class BuildingListResponse(
+    val page: Int,
+    val per_page: Int,
+    val total_pages: Int,
+    val total_items: Int,
+    val result: List<BuildingItem>
+)
+
+@Serializable
+data class BuildingCreateResponse(
+    val name: String,
+    val address: String,
+    val created: String,
+    val updated: String,
+    val id: Int
+)
+
+@Serializable
+data class BuildingResponse(
+    val name: String,
+    val address: String,
+    val created: String,
+    val updated: String,
+    val id: Int
+)
+
+@Serializable
+data class BuildingUpdateResponse(
+    val name: String,
+    val address: String,
+    val created: String,
+    val updated: String,
+    val id: Int
+)
+
+@Serializable
+data class BuildingDeleteResponse(
+    val detail: String
 )
