@@ -1,8 +1,10 @@
 package com.example.alpha.ui.auth
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.CookieManager
@@ -13,10 +15,10 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import com.example.alpha.R
 import com.example.alpha.data.Repository
 import com.example.alpha.data.api.AuthResponse
 import com.example.alpha.data.api.AuthResult
@@ -55,8 +57,19 @@ class AuthFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (webView.canGoBack()) {
+                    webView.goBack()
+                } else {
+                    Toast.makeText(requireContext(), "Назад нельзя...", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
 
         val webSettings = webView.settings
         webSettings.javaScriptEnabled = true
@@ -100,15 +113,19 @@ class AuthFragment : Fragment() {
                 setAuthIsGranted(false)
                 val authResponse = handleAuthorizationResponse(code)
                 if(authResponse.user.user_type == 1) {
-                    refreshWebView(message = "Authorization failed. Student account is not allowed.")
+                    refreshWebView(message = "Авторизация не выполнена. Студент не может войти в систему.")
                 } else {
                     val jwtToken = authResponse.access_token
                     val user = authResponse.user
                     val authResult = AuthResult(jwtToken, user)
-                    authViewModel.setAuthResult(authResult)
                     setAuthIsGranted( true, jwtToken)
                     Repository.getInstance(jwtToken).saveUser(user)
-                    Navigation.findNavController(binding.root).navigate(R.id.navigation_home)
+                    authViewModel.setAuthResult(authResult)
+//                    if (PermissionManager.checkIsFirstRun()) {
+//                        Navigation.findNavController(binding.root).navigate(R.id.greetingFragment)
+//                    } else {
+//                        Navigation.findNavController(binding.root).navigate(R.id.navigation_home)
+//                    }
                 }
             }
         } else {
@@ -116,7 +133,7 @@ class AuthFragment : Fragment() {
         }
     }
 
-    fun refreshWebView(message: String = "Authentication failed. Please try again.") {
+    fun refreshWebView(message: String = "Авторизация не выполнена. Попробуйте еще раз.") {
         CookieManager.getInstance().removeAllCookies(null)
         CookieManager.getInstance().flush()
         webView.clearCache(true)
@@ -148,4 +165,16 @@ class AuthFragment : Fragment() {
             parameter("code", code)
         }.body<AuthResponse>()
     }
+
+    @Deprecated("Deprecated in Java")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                Toast.makeText(activity,"Пройдите авторизацию!",Toast.LENGTH_SHORT).show();
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 }

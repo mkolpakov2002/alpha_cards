@@ -33,6 +33,7 @@ import com.example.alpha.data.api.Terminal
 import com.example.alpha.ui.api.building.BuildingListFragmentDirections
 import com.example.alpha.ui.auth.AuthViewModel
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -40,7 +41,7 @@ class RoomListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter
-    private lateinit var addFab: FloatingActionButton
+    private lateinit var addFab: ExtendedFloatingActionButton
     private lateinit var editFab: FloatingActionButton
     private lateinit var deleteFab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
@@ -262,7 +263,7 @@ class ItemDiffCallback<T : DataScheme> : DiffUtil.ItemCallback<T>() {
                 oldItem.name == newItem.name &&
                         oldItem.inv_key == newItem.inv_key &&
                         oldItem.hardware == newItem.hardware &&
-                        oldItem.group == newItem.group &&
+                        oldItem.room == newItem.room &&
                         oldItem.status == newItem.status &&
                         oldItem.owner == newItem.owner &&
                         oldItem.place == newItem.place &&

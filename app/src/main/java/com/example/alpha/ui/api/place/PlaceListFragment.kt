@@ -40,7 +40,6 @@ class PlaceListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter
-    private lateinit var addFab: FloatingActionButton
     private lateinit var editFab: FloatingActionButton
     private lateinit var deleteFab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
@@ -51,14 +50,15 @@ class PlaceListFragment : Fragment() {
     private val viewModel: PlaceListViewModel by viewModels()
 
     private var sectionId: Int? = null
+    private var roomId: Int? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
 
         sectionId = arguments?.getInt("sectionId", -1000)
+        roomId = arguments?.getInt("roomId", -1000)
 
         recyclerView = view.findViewById(R.id.recyclerView)
-        addFab = view.findViewById(R.id.addFab)
         editFab = view.findViewById(R.id.editFab)
         deleteFab = view.findViewById(R.id.deleteFab)
         progressBar = view.findViewById(R.id.progressBar)
@@ -72,10 +72,6 @@ class PlaceListFragment : Fragment() {
         adapter = ItemAdapter(this::onItemClick, this::onItemLongClick, viewModel)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-
-        addFab.setOnClickListener {
-            viewModel.onAddItemClick()
-        }
 
         editFab.setOnClickListener {
             viewModel.onEditItemClick()
@@ -97,7 +93,6 @@ class PlaceListFragment : Fragment() {
         }
 
         viewModel.selectedItemCount.observe(viewLifecycleOwner) { count ->
-            addFab.visibility = if (count == 0) View.VISIBLE else View.GONE
             editFab.visibility = if (count == 1) View.VISIBLE else View.GONE
             deleteFab.visibility = if (count > 0) View.VISIBLE else View.GONE
         }
@@ -122,7 +117,7 @@ class PlaceListFragment : Fragment() {
     }
 
     private fun onItemClick(placeItem: PlaceItem) {
-        val action = PlaceListFragmentDirections.actionPlaceListFragmentToItemListFragment(placeItem.id)
+        val action = PlaceListFragmentDirections.actionPlaceListFragmentToItemListFragment(placeItem.id, roomId?: -1000)
         Navigation.findNavController(requireView()).navigate(action)
     }
 
@@ -263,7 +258,7 @@ class ItemDiffCallback<T : DataScheme> : DiffUtil.ItemCallback<T>() {
                 oldItem.name == newItem.name &&
                         oldItem.inv_key == newItem.inv_key &&
                         oldItem.hardware == newItem.hardware &&
-                        oldItem.group == newItem.group &&
+                        oldItem.room == newItem.room &&
                         oldItem.status == newItem.status &&
                         oldItem.owner == newItem.owner &&
                         oldItem.place == newItem.place &&

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.example.alpha.MainActivity
 import com.example.alpha.R
 import com.example.alpha.databinding.FragmentPermissionLocationBinding
 import com.example.alpha.rxpermissions3.RxPermissions
@@ -44,10 +45,10 @@ class PermissionLocationFragment : Fragment() {
                     Manifest.permission.ACCESS_FINE_LOCATION)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { granted ->
-                    if (!granted.granted) { // Always true pre-M
+                    if (granted.granted) {
+//                        (requireActivity() as MainActivity).checkPermissionsAndNavigate()
+                    } else {
                         Toast.makeText(requireActivity(), "Разрешение не дано.", Toast.LENGTH_SHORT).show()
-                    } else{
-                        Navigation.findNavController(binding!!.root).navigate(R.id.authFragment)
                     }
                 })
         }

@@ -54,7 +54,7 @@ import com.example.alpha.data_base.AppDatabase
 
 class Repository(private val apiClient: ApiClient) {
 
-    suspend fun getRoomItems(page: Int = 1, perPage: Int = 50): List<Room> {
+    suspend fun getRoomItems(page: Int = 1, perPage: Int = 250): List<Room> {
         val response = apiClient.getRoomList(page, perPage)
         return response.result
     }
@@ -72,7 +72,7 @@ class Repository(private val apiClient: ApiClient) {
     }
 
     // Hardware
-    suspend fun getHardwareItems(page: Int = 1, perPage: Int = 50): List<Hardware> {
+    suspend fun getHardwareItems(page: Int = 1, perPage: Int = 250): List<Hardware> {
         val response = apiClient.getHardwareList(page, perPage)
         return response.result
     }
@@ -90,7 +90,7 @@ class Repository(private val apiClient: ApiClient) {
     }
 
     // Item
-    suspend fun getItemItems(page: Int = 1, perPage: Int = 50): List<Item> {
+    suspend fun getItemItems(page: Int = 1, perPage: Int = 250): List<Item> {
         val response = apiClient.getItemList(page, perPage)
         return response.result
     }
@@ -108,7 +108,7 @@ class Repository(private val apiClient: ApiClient) {
 //    }
 
     // Terminal
-    suspend fun getTerminalItems(page: Int = 1, perPage: Int = 50): List<Terminal> {
+    suspend fun getTerminalItems(page: Int = 1, perPage: Int = 250): List<Terminal> {
         val response = apiClient.getTerminalList(page, perPage)
         return response.result
     }
@@ -126,7 +126,7 @@ class Repository(private val apiClient: ApiClient) {
     }
 
     // Section
-    suspend fun getSectionItems(page: Int = 1, perPage: Int = 50): List<Section> {
+    suspend fun getSectionItems(page: Int = 1, perPage: Int = 250): List<Section> {
         val response = apiClient.getSectionList(page, perPage)
         return response.result
     }
@@ -144,7 +144,7 @@ class Repository(private val apiClient: ApiClient) {
     }
 
     // PlaceItem
-    suspend fun getPlaceItems(page: Int = 1, perPage: Int = 50): List<PlaceItem> {
+    suspend fun getPlaceItems(page: Int = 1, perPage: Int = 250): List<PlaceItem> {
         val response = apiClient.getPlaceItemList(page, perPage)
         return response.result
     }
@@ -162,7 +162,7 @@ class Repository(private val apiClient: ApiClient) {
     }
 
     // LabItem
-    suspend fun getLabItems(page: Int = 1, perPage: Int = 50): List<LabItem> {
+    suspend fun getLabItems(page: Int = 1, perPage: Int = 250): List<LabItem> {
         val response = apiClient.getLabItemList(page, perPage)
         return response.result
     }
@@ -180,7 +180,7 @@ class Repository(private val apiClient: ApiClient) {
     }
 
     // BuildingItem
-    suspend fun getBuildingItems(page: Int = 1, perPage: Int = 50): List<BuildingItem> {
+    suspend fun getBuildingItems(page: Int = 1, perPage: Int = 250): List<BuildingItem> {
         val response = apiClient.getBuildingItemList(page, perPage)
         return response.result
     }

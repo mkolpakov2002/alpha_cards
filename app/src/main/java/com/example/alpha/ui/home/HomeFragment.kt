@@ -113,7 +113,7 @@ class HomeFragment : Fragment() {
         if(!authViewModel.isAuthIsGranted()) {
             val token = PermissionManager.getToken()
             if (token.isNullOrEmpty())
-                Navigation.findNavController(requireView()).navigate(R.id.authFragment)
+//                Navigation.findNavController(requireView()).navigate(R.id.authFragment)
             else {
                 viewLifecycleOwner.lifecycleScope.launch {
                     val user = Repository.getInstance(token).getUser()

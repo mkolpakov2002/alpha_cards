@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.example.alpha.MainActivity
 import com.example.alpha.R
 import com.example.alpha.databinding.FragmentPermissionCameraBinding
 import com.example.alpha.rxpermissions3.RxPermissions
@@ -40,10 +41,10 @@ class PermissionCameraFragment : Fragment() {
             disposables.add(rxPermissions!!
                 .request(Manifest.permission.CAMERA)
                 .subscribe { granted ->
-                    if (!granted) { // Always true pre-M
-                        Toast.makeText(requireActivity(), "Разрешение не дано.", Toast.LENGTH_SHORT).show()
+                    if (granted) {
+//                        (requireActivity() as MainActivity).checkPermissionsAndNavigate()
                     } else {
-                        Navigation.findNavController(binding!!.root).navigate(R.id.permissionLocationFragment)
+                        Toast.makeText(requireActivity(), "Разрешение не дано.", Toast.LENGTH_SHORT).show()
                     }
                 })
         }

@@ -31,13 +31,14 @@ import com.example.alpha.data.api.Section
 import com.example.alpha.data.api.Terminal
 import com.example.alpha.ui.auth.AuthViewModel
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class SectionListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter
-    private lateinit var addFab: FloatingActionButton
+    private lateinit var addFab: ExtendedFloatingActionButton
     private lateinit var editFab: FloatingActionButton
     private lateinit var deleteFab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
@@ -115,7 +116,7 @@ class SectionListFragment : Fragment() {
     }
 
     private fun onItemClick(section: Section) {
-        val action = SectionListFragmentDirections.actionSectionListFragmentToPlaceListFragment(section.id)
+        val action = SectionListFragmentDirections.actionSectionListFragmentToPlaceListFragment(section.id, roomId?: -1000)
         Navigation.findNavController(requireView()).navigate(action)
     }
 
@@ -233,7 +234,7 @@ class ItemDiffCallback<T : DataScheme> : DiffUtil.ItemCallback<T>() {
                 oldItem.name == newItem.name &&
                         oldItem.inv_key == newItem.inv_key &&
                         oldItem.hardware == newItem.hardware &&
-                        oldItem.group == newItem.group &&
+                        oldItem.room == newItem.room &&
                         oldItem.status == newItem.status &&
                         oldItem.owner == newItem.owner &&
                         oldItem.place == newItem.place &&

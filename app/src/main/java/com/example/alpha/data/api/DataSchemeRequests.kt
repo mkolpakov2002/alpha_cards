@@ -1,7 +1,7 @@
 package com.example.alpha.data.api
 
-import io.realm.kotlin.types.RealmObject
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 @Serializable
 data class HardwareCreateRequest(
@@ -21,20 +21,23 @@ data class HardwareUpdateRequest(
 
 @Serializable
 data class ItemCreateRequest(
+    val id: Int,
     val name: String,
     val inv_key: String,
     val hardware: Int,
-    val group: Int,
+    val room: Int,
     val status: Int,
     val owner: String,
-    val place: Int,
+    val place: Int?,
     val available: Boolean,
-    val specifications: Map<String, String>
+    val specifications: Map<String, JsonElement>,
+    val created: String,
+    val updated: String
 )
 
 @Serializable
 data class ItemUpdateRequest(
-    val group: Int? = null,
+    val room: Int? = null,
     val status: Int? = null,
     val place: Int? = null,
     val available: Boolean? = null

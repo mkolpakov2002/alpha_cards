@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.alpha.R
+import com.example.alpha.data.Repository
 import com.example.alpha.data.api.User
 import com.example.alpha.databinding.FragmentUserProfileBinding
 import com.example.alpha.ui.auth.AuthViewModel
@@ -49,7 +50,9 @@ class UserProfileFragment : Fragment() {
 
         materialButtonChangeProfile.setOnClickListener {
             viewLifecycleOwner.lifecycleScope.launch {
-                Navigation.findNavController(it).navigate(R.id.authFragment)
+                setAuthIsGranted(false)
+                authViewModel.setAuthResult(null)
+//                Navigation.findNavController(it).navigate(R.id.authFragment)
             }
         }
 

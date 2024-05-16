@@ -36,7 +36,6 @@ class HardwareListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter<Hardware>
-    private lateinit var addFab: FloatingActionButton
     private lateinit var editFab: FloatingActionButton
     private lateinit var deleteFab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
@@ -50,7 +49,6 @@ class HardwareListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
 
         recyclerView = view.findViewById(R.id.recyclerView)
-        addFab = view.findViewById(R.id.addFab)
         editFab = view.findViewById(R.id.editFab)
         deleteFab = view.findViewById(R.id.deleteFab)
         progressBar = view.findViewById(R.id.progressBar)
@@ -65,9 +63,6 @@ class HardwareListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL)
 
-        addFab.setOnClickListener {
-            viewModel.onAddItemClick()
-        }
 
         editFab.setOnClickListener {
             viewModel.onEditItemClick()
@@ -89,7 +84,6 @@ class HardwareListFragment : Fragment() {
         }
 
         viewModel.selectedItemCount.observe(viewLifecycleOwner) { count ->
-            addFab.visibility = if (count == 0) View.VISIBLE else View.GONE
             editFab.visibility = if (count == 1) View.VISIBLE else View.GONE
             deleteFab.visibility = if (count > 0) View.VISIBLE else View.GONE
         }
@@ -219,7 +213,7 @@ class ItemDiffCallback<T : DataScheme> : DiffUtil.ItemCallback<T>() {
                 oldItem.name == newItem.name &&
                         oldItem.inv_key == newItem.inv_key &&
                         oldItem.hardware == newItem.hardware &&
-                        oldItem.group == newItem.group &&
+                        oldItem.room == newItem.room &&
                         oldItem.status == newItem.status &&
                         oldItem.owner == newItem.owner &&
                         oldItem.place == newItem.place &&

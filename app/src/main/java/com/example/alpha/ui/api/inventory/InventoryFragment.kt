@@ -185,7 +185,7 @@ class ItemDiffCallback<T : DataScheme> : DiffUtil.ItemCallback<T>() {
                 oldItem.name == newItem.name &&
                         oldItem.inv_key == newItem.inv_key &&
                         oldItem.hardware == newItem.hardware &&
-                        oldItem.group == newItem.group &&
+                        oldItem.room == newItem.room &&
                         oldItem.status == newItem.status &&
                         oldItem.owner == newItem.owner &&
                         oldItem.place == newItem.place &&

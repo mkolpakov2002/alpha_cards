@@ -35,6 +35,7 @@ class RoomListViewModel : ViewModel() {
     private lateinit var repository: Repository
 
     fun refreshItems(token: String, buildingId: Int? = null) {
+        Timber.plant(Timber.DebugTree())
         if (!this::repository.isInitialized) {
             repository = Repository.getInstance(token)
         }

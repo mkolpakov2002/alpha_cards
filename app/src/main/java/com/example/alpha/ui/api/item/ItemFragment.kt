@@ -1,7 +1,5 @@
 package com.example.alpha.ui.api.item
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -16,10 +14,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.alpha.R
+import com.example.alpha.data.api.Hardware
 import com.example.alpha.data.api.Item
 import com.example.alpha.databinding.FragmentItemBinding
 import com.example.alpha.ui.auth.AuthViewModel
@@ -27,13 +25,18 @@ import com.google.mlkit.md.LiveBarcodeScanningFragment
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.jsonPrimitive
 
 class ItemFragment : Fragment() {
 
     private lateinit var binding: FragmentItemBinding
     private val viewModel: ItemViewModel by viewModels()
     private var itemId: Int = -1000
+    private var placeId: Int = -1000
+    private var roomId: Int = -1000
     private val authViewModel: AuthViewModel by activityViewModels()
+    private var isNew = true
+    private var hardwareList: List<Hardware> = emptyList()
 
     private var jwtToken: String? = null
 
@@ -62,20 +65,48 @@ class ItemFragment : Fragment() {
 
         if (itemId != -1000) {
             viewModel.getItem(getAuthToken(), itemId)
+            isNew = false
         }
 
+        placeId = arguments?.getInt("placeId", 0) ?: -1000
+        roomId = arguments?.getInt("roomId", 0) ?: -1000
+        fetchHardwareList()
         setupObservers()
         setupListeners()
         setupBarcodeResultListener()
     }
 
+    private fun fetchHardwareList() {
+        viewModel.getHardwareList(getAuthToken())
+    }
+
     private fun setupObservers() {
+        binding.etPlace.isEnabled = false
+        if(!isNew) {
+            binding.etName.isEnabled = false
+            binding.etInvKey.isEnabled = false
+            binding.etHardware.isEnabled = false
+            binding.etGroup.isEnabled = false
+            binding.etStatus.isEnabled = false
+            binding.etOwner.isEnabled = false
+            binding.cbAvailable.isEnabled = false
+            binding.btnSave.visibility = View.GONE
+            binding.btnScan.visibility = View.INVISIBLE
+            binding.btnAddSpecification.visibility = View.GONE
+            binding.btnHardware.visibility = View.GONE
+        } else {
+            binding.etPlace.setText(placeId.toString())
+            binding.etGroup.setText(roomId.toString())
+            viewModel.hardwareList.observe(viewLifecycleOwner) { list ->
+                hardwareList = list
+            }
+        }
         viewModel.item.observe(viewLifecycleOwner) { item ->
             item?.let {
                 binding.etName.setText(item.name)
                 binding.etInvKey.setText(item.inv_key)
                 binding.etHardware.setText(item.hardware.toString())
-                binding.etGroup.setText(item.group?.toString() ?: "")
+                binding.etGroup.setText(item.room?.toString() ?: "")
                 binding.etStatus.setText(item.status.toString())
                 binding.etOwner.setText(item.owner)
                 binding.etPlace.setText(item.place.toString())
@@ -93,6 +124,8 @@ class ItemFragment : Fragment() {
         binding.btnSave.setOnClickListener {
             val updatedItem = getUpdatedItem()
             viewModel.updateItem(getAuthToken(), updatedItem)
+            Toast.makeText(requireContext(), "Запрос отправлен...", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(requireView()).navigateUp()
         }
 
         binding.btnScan.setOnClickListener {
@@ -102,6 +135,24 @@ class ItemFragment : Fragment() {
         binding.btnAddSpecification.setOnClickListener {
             showAddSpecificationDialog()
         }
+        binding.btnHardware.setOnClickListener {
+            showHardwareSelectionDialog()
+        }
+    }
+
+    private fun showHardwareSelectionDialog() {
+        val hardwareNames = hardwareList.map { it.name }
+        val selectedIndex = hardwareList.indexOfFirst { it.id == binding.etHardware.text.toString().toIntOrNull() }
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Выберите оборудование")
+            .setSingleChoiceItems(hardwareNames.toTypedArray(), selectedIndex) { dialog, which ->
+                val selectedHardware = hardwareList[which]
+                binding.etHardware.setText(selectedHardware.id.toString())
+                dialog.dismiss()
+            }
+            .setNegativeButton("Отмена", null)
+            .show()
     }
 
     private fun setupBarcodeResultListener() {
@@ -120,10 +171,11 @@ class ItemFragment : Fragment() {
     }
 
     private fun getUpdatedItem(): Item {
+        val newId = if (isNew) 0 else itemId
         val name = binding.etName.text.toString()
         val invKey = binding.etInvKey.text.toString()
         val hardware = binding.etHardware.text.toString().toIntOrNull() ?: 0
-        val group = binding.etGroup.text.toString().toIntOrNull()
+        val room = binding.etGroup.text.toString().toIntOrNull()
         val status = binding.etStatus.text.toString().toIntOrNull() ?: 0
         val owner = binding.etOwner.text.toString()
         val place = binding.etPlace.text.toString().toIntOrNull() ?: 0
@@ -131,11 +183,11 @@ class ItemFragment : Fragment() {
         val specifications = getUpdatedSpecifications()
 
         return Item(
-            id = itemId,
+            id = newId,
             name = name,
             inv_key = invKey,
             hardware = hardware,
-            group = group,
+            room = room,
             status = status,
             owner = owner,
             place = place,
@@ -159,8 +211,13 @@ class ItemFragment : Fragment() {
         val btnDelete = view.findViewById<ImageButton>(R.id.btnDelete)
 
         etKey.setText(key)
-        etValue.setText(value.toString())
+        etValue.setText(value.jsonPrimitive.content)
 
+        if(!isNew) {
+            btnDelete.visibility = View.GONE
+            etKey.isEnabled = false
+            etValue.isEnabled = false
+        }
         btnDelete.setOnClickListener {
             binding.specificationsContainer.removeView(view)
         }

@@ -82,7 +82,7 @@ data class ItemCreateResponse(
     val name: String,
     val inv_key: String,
     val hardware: Int,
-    val group: Int,
+    val room: Int,
     val status: Int,
     val owner: String,
     val place: Int,

@@ -33,10 +33,6 @@ class GreetingFragment : Fragment() {
         materialButtonNext.setOnClickListener{
             if(!checkIfCameraPermissionIsGranted())
                 Navigation.findNavController(binding.root).navigate(R.id.permissionCameraFragment)
-            else if(!checkIfLocationPermissionIsGranted())
-                Navigation.findNavController(binding.root).navigate(R.id.permissionLocationFragment)
-            else if(!checkIfAuthIsGranted())
-                Navigation.findNavController(binding.root).navigate(R.id.authFragment)
             else
                 Navigation.findNavController(binding.root).navigate(R.id.navigation_home)
         }

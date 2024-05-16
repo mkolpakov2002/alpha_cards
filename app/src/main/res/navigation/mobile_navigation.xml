@@ -233,6 +233,9 @@
         <argument
             android:name="sectionId"
             app:argType="integer" />
+        <argument
+            android:name="roomId"
+            app:argType="integer" />
         <action
             android:id="@+id/action_placeListFragment_to_sectionListFragment"
             app:destination="@id/sectionListFragment" />
@@ -247,12 +250,18 @@
         <argument
             android:name="placeId"
             app:argType="integer" />
+        <argument
+            android:name="roomId"
+            app:argType="integer" />
         <action
             android:id="@+id/action_itemListFragment_to_placeListFragment"
             app:destination="@id/placeListFragment" />
         <action
             android:id="@+id/action_itemListFragment_to_itemFragment"
             app:destination="@id/itemFragment" />
+        <action
+            android:id="@+id/action_itemListFragment_to_itemInventoryFragment"
+            app:destination="@id/itemInventoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/sectionListFragment"
@@ -279,12 +288,21 @@
         <argument
             android:name="itemId"
             app:argType="integer" />
+        <argument
+            android:name="placeId"
+            app:argType="integer" />
+        <argument
+            android:name="roomId"
+            app:argType="integer" />
         <action
             android:id="@+id/action_itemFragment_to_itemListFragment"
             app:destination="@id/itemListFragment" />
         <action
             android:id="@+id/action_itemFragment_to_liveBarcodeScanningFragment"
             app:destination="@id/liveBarcodeScanningFragment" />
+        <action
+            android:id="@+id/action_itemFragment_to_itemInventoryFragment"
+            app:destination="@id/itemInventoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/liveBarcodeScanningFragment"
@@ -293,5 +311,22 @@
         <action
             android:id="@+id/action_liveBarcodeScanningFragment_to_itemFragment"
             app:destination="@id/itemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemInventoryFragment"
+        android:name="com.example.alpha.ui.api.item.ItemInventoryFragment"
+        android:label="Инвентаризация" >
+        <argument
+            android:name="placeId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_itemInventoryFragment_to_liveBarcodeScanningFragment"
+            app:destination="@id/liveBarcodeScanningFragment" />
+        <action
+            android:id="@+id/action_itemInventoryFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+        <action
+            android:id="@+id/action_itemInventoryFragment_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
     </fragment>
 </navigation>

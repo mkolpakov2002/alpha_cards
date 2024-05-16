@@ -24,7 +24,7 @@ class AuthViewModel : ViewModel() {
         return !authResult.value?.jwtToken.isNullOrEmpty()
     }
 
-    fun updateAuthState() {
+    private fun updateAuthState() {
         _isAuthGranted.postValue(PermissionManager.checkIfAuthIsGranted())
     }
 }

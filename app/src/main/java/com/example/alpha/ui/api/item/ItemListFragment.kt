@@ -34,28 +34,32 @@ import com.example.alpha.ui.api.place.PlaceListViewModel
 import com.example.alpha.ui.api.room.ItemDiffCallback
 import com.example.alpha.ui.auth.AuthViewModel
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ItemListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter
-    private lateinit var addFab: FloatingActionButton
     private lateinit var editFab: FloatingActionButton
     private lateinit var deleteFab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
     private lateinit var errorTextView: TextView
+    private lateinit var inventoryFab: ExtendedFloatingActionButton
+    private lateinit var addFab: ExtendedFloatingActionButton
     private var jwtToken: String? = null
 
     private val authViewModel: AuthViewModel by activityViewModels()
     private val viewModel: ItemListViewModel by viewModels()
 
     private var placeId: Int? = null
+    private var roomId: Int? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
 
         placeId = arguments?.getInt("placeId", -1000)
+        roomId = arguments?.getInt("roomId", -1000)
 
         recyclerView = view.findViewById(R.id.recyclerView)
         addFab = view.findViewById(R.id.addFab)
@@ -63,6 +67,7 @@ class ItemListFragment : Fragment() {
         deleteFab = view.findViewById(R.id.deleteFab)
         progressBar = view.findViewById(R.id.progressBar)
         errorTextView = view.findViewById(R.id.errorTextView)
+        inventoryFab = view.findViewById(R.id.inventoryFab)
 
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.title = "Предметы"
@@ -73,12 +78,36 @@ class ItemListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
+        addFab.visibility = View.VISIBLE
         addFab.setOnClickListener {
-            viewModel.onAddItemClick()
+            var placeIdNew = 0
+            if (placeId != -1000 && placeId != null) {
+                placeIdNew = placeId!!
+            }
+            var roomIdNew = 0
+            if (roomId != -1000 && roomId != null) {
+                roomIdNew = roomId!!
+            }
+            val action = ItemListFragmentDirections.actionItemListFragmentToItemFragment(
+                -1000, placeIdNew, roomIdNew
+            )
+            Navigation.findNavController(requireView()).navigate(action)
         }
 
         deleteFab.setOnClickListener {
             viewModel.onDeleteItemClick(jwtToken ?: "")
+        }
+
+        if(placeId == -1000 || placeId == null) {
+            inventoryFab.visibility = View.GONE
+        } else{
+            inventoryFab.visibility = View.VISIBLE
+            inventoryFab.setOnClickListener {
+                val action = ItemListFragmentDirections.actionItemListFragmentToItemInventoryFragment(
+                    placeId!!
+                )
+                Navigation.findNavController(requireView()).navigate(action)
+            }
         }
 
         authViewModel.authResult.observe(viewLifecycleOwner) { authResult ->
@@ -145,7 +174,7 @@ class ItemListFragment : Fragment() {
     }
 
     private fun onItemClick(item: Item) {
-        val action = ItemListFragmentDirections.actionItemListFragmentToItemFragment(item.id)
+        val action = ItemListFragmentDirections.actionItemListFragmentToItemFragment(item.id, -1000, roomId?: -1000)
         Navigation.findNavController(requireView()).navigate(action)
     }
 }
@@ -256,7 +285,7 @@ class ItemDiffCallback<T : DataScheme> : DiffUtil.ItemCallback<T>() {
                 oldItem.name == newItem.name &&
                         oldItem.inv_key == newItem.inv_key &&
                         oldItem.hardware == newItem.hardware &&
-                        oldItem.group == newItem.group &&
+                        oldItem.room == newItem.room &&
                         oldItem.status == newItem.status &&
                         oldItem.owner == newItem.owner &&
                         oldItem.place == newItem.place &&
