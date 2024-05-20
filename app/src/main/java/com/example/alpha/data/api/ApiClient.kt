@@ -45,7 +45,7 @@ class ApiClient(private val baseUrl: String = "https://1789.nas.helow19274.ru", 
 
     private val client = HttpClient {
         install(HttpTimeout) {
-            requestTimeoutMillis = 1000
+            requestTimeoutMillis = 100000
         }
         install(Logging) {
             logger = Logger.DEFAULT

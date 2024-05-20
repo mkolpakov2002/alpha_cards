@@ -41,8 +41,6 @@ class ItemListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter
-    private lateinit var editFab: FloatingActionButton
-    private lateinit var deleteFab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
     private lateinit var errorTextView: TextView
     private lateinit var inventoryFab: ExtendedFloatingActionButton
@@ -63,8 +61,6 @@ class ItemListFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         addFab = view.findViewById(R.id.addFab)
-        editFab = view.findViewById(R.id.editFab)
-        deleteFab = view.findViewById(R.id.deleteFab)
         progressBar = view.findViewById(R.id.progressBar)
         errorTextView = view.findViewById(R.id.errorTextView)
         inventoryFab = view.findViewById(R.id.inventoryFab)
@@ -78,13 +74,17 @@ class ItemListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
-        addFab.visibility = View.VISIBLE
+        if (placeId == -1000 || placeId == null) {
+            addFab.visibility = View.GONE
+        } else {
+            addFab.visibility = View.VISIBLE
+        }
         addFab.setOnClickListener {
-            var placeIdNew = 0
+            var placeIdNew = -1000
             if (placeId != -1000 && placeId != null) {
                 placeIdNew = placeId!!
             }
-            var roomIdNew = 0
+            var roomIdNew = -1000
             if (roomId != -1000 && roomId != null) {
                 roomIdNew = roomId!!
             }
@@ -92,10 +92,6 @@ class ItemListFragment : Fragment() {
                 -1000, placeIdNew, roomIdNew
             )
             Navigation.findNavController(requireView()).navigate(action)
-        }
-
-        deleteFab.setOnClickListener {
-            viewModel.onDeleteItemClick(jwtToken ?: "")
         }
 
         if(placeId == -1000 || placeId == null) {
@@ -123,8 +119,6 @@ class ItemListFragment : Fragment() {
 
         viewModel.selectedItemCount.observe(viewLifecycleOwner) { count ->
             addFab.visibility = if (count == 0) View.VISIBLE else View.GONE
-            editFab.visibility = if (count == 1) View.VISIBLE else View.GONE
-            deleteFab.visibility = if (count > 0) View.VISIBLE else View.GONE
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->

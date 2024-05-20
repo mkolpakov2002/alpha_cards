@@ -68,8 +68,8 @@ class ItemFragment : Fragment() {
             isNew = false
         }
 
-        placeId = arguments?.getInt("placeId", 0) ?: -1000
-        roomId = arguments?.getInt("roomId", 0) ?: -1000
+        placeId = arguments?.getInt("placeId", -1000) ?: -1000
+        roomId = arguments?.getInt("roomId", -1000) ?: -1000
         fetchHardwareList()
         setupObservers()
         setupListeners()
@@ -95,8 +95,13 @@ class ItemFragment : Fragment() {
             binding.btnAddSpecification.visibility = View.GONE
             binding.btnHardware.visibility = View.GONE
         } else {
-            binding.etPlace.setText(placeId.toString())
-            binding.etGroup.setText(roomId.toString())
+            if (placeId != -1000 && roomId != -1000) {
+                binding.etPlace.setText(placeId.toString())
+                binding.etGroup.setText(roomId.toString())
+            } else {
+                binding.etPlace.setText("")
+                binding.etGroup.setText("")
+            }
             viewModel.hardwareList.observe(viewLifecycleOwner) { list ->
                 hardwareList = list
             }
@@ -124,8 +129,7 @@ class ItemFragment : Fragment() {
         binding.btnSave.setOnClickListener {
             val updatedItem = getUpdatedItem()
             viewModel.updateItem(getAuthToken(), updatedItem)
-            Toast.makeText(requireContext(), "Запрос отправлен...", Toast.LENGTH_SHORT).show()
-            Navigation.findNavController(requireView()).navigateUp()
+            observeViewModel()
         }
 
         binding.btnScan.setOnClickListener {
@@ -135,8 +139,28 @@ class ItemFragment : Fragment() {
         binding.btnAddSpecification.setOnClickListener {
             showAddSpecificationDialog()
         }
+
         binding.btnHardware.setOnClickListener {
             showHardwareSelectionDialog()
+        }
+    }
+
+    private fun observeViewModel() {
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            if (errorMessage != null) {
+                // показываем диалоговое окно с текстом ошибки
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Ошибка")
+                    .setMessage(errorMessage)
+                    .setPositiveButton("OK") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
+            } else {
+                // если ошибки нет, показываем сообщение об успешном сохранении и переходим назад
+                Toast.makeText(requireContext(), "Данные успешно сохранены", Toast.LENGTH_SHORT).show()
+                Navigation.findNavController(requireView()).navigateUp()
+            }
         }
     }
 

@@ -29,6 +29,7 @@ import com.example.alpha.data.api.PlaceItem
 import com.example.alpha.data.api.Room
 import com.example.alpha.data.api.Section
 import com.example.alpha.data.api.Terminal
+import com.example.alpha.ui.api.place.PlaceListViewModel
 import com.example.alpha.ui.auth.AuthViewModel
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -38,9 +39,6 @@ class SectionListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter
-    private lateinit var addFab: ExtendedFloatingActionButton
-    private lateinit var editFab: FloatingActionButton
-    private lateinit var deleteFab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
     private lateinit var errorTextView: TextView
     private var jwtToken: String? = null
@@ -56,9 +54,6 @@ class SectionListFragment : Fragment() {
         roomId = arguments?.getInt("roomId", -1000)
 
         recyclerView = view.findViewById(R.id.recyclerView)
-        addFab = view.findViewById(R.id.addFab)
-        editFab = view.findViewById(R.id.editFab)
-        deleteFab = view.findViewById(R.id.deleteFab)
         progressBar = view.findViewById(R.id.progressBar)
         errorTextView = view.findViewById(R.id.errorTextView)
 
@@ -67,21 +62,9 @@ class SectionListFragment : Fragment() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
         setHasOptionsMenu(true)
 
-        adapter = ItemAdapter(this::onItemClick, viewModel::onItemLongClick)
+        adapter = ItemAdapter(this::onItemClick)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-
-        addFab.setOnClickListener {
-            viewModel.onAddItemClick()
-        }
-
-        editFab.setOnClickListener {
-            viewModel.onEditItemClick()
-        }
-
-        deleteFab.setOnClickListener {
-            viewModel.onDeleteItemClick(jwtToken ?: "")
-        }
 
         authViewModel.authResult.observe(viewLifecycleOwner) { authResult ->
             jwtToken = authResult?.jwtToken
@@ -92,12 +75,6 @@ class SectionListFragment : Fragment() {
             if (items.isEmpty()) {
                 Toast.makeText(requireContext(),"Здесь пока пусто!", Toast.LENGTH_SHORT).show()
             }
-        }
-
-        viewModel.selectedItemCount.observe(viewLifecycleOwner) { count ->
-            addFab.visibility = if (count == 0) View.VISIBLE else View.GONE
-            editFab.visibility = if (count == 1) View.VISIBLE else View.GONE
-            deleteFab.visibility = if (count > 0) View.VISIBLE else View.GONE
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
@@ -143,8 +120,7 @@ class SectionListFragment : Fragment() {
 }
 
 class ItemAdapter(
-    private val onItemClick: (Section) -> Unit,
-    private val onItemLongClick: (Section) -> Unit
+    private val onItemClick: (Section) -> Unit
 ) : ListAdapter<Section, ItemAdapter.ViewHolder>(ItemDiffCallback<Section>()) {
 
     private val expandedPositions = mutableSetOf<Int>()
@@ -175,6 +151,7 @@ class ItemAdapter(
                 descriptionTextView.text = item.description
                 descriptionTextView.visibility = View.VISIBLE
                 roomTextView.text = "Id комнаты " + item.room.toString()
+                roomTextView.visibility = View.VISIBLE
                 button.text = "Полки →"
                 button.visibility = View.VISIBLE
             } else {
@@ -185,10 +162,6 @@ class ItemAdapter(
 
             iconImageView.setImageResource(getIconResId())
 
-            button.setOnClickListener {
-                onItemClick(item)
-            }
-
             itemView.setOnClickListener {
                 if (isExpanded) {
                     expandedPositions.remove(position)
@@ -198,6 +171,9 @@ class ItemAdapter(
                 notifyItemChanged(position)
             }
 
+            button.setOnClickListener {
+                onItemClick(item)
+            }
         }
 
         private fun getIconResId(): Int {

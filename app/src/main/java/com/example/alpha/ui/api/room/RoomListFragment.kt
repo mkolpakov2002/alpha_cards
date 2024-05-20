@@ -42,8 +42,6 @@ class RoomListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter
     private lateinit var addFab: ExtendedFloatingActionButton
-    private lateinit var editFab: FloatingActionButton
-    private lateinit var deleteFab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
     private lateinit var errorTextView: TextView
     private var jwtToken: String? = null
@@ -60,8 +58,6 @@ class RoomListFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         addFab = view.findViewById(R.id.addFab)
-        editFab = view.findViewById(R.id.editFab)
-        deleteFab = view.findViewById(R.id.deleteFab)
         progressBar = view.findViewById(R.id.progressBar)
         errorTextView = view.findViewById(R.id.errorTextView)
 
@@ -78,14 +74,6 @@ class RoomListFragment : Fragment() {
             viewModel.onAddItemClick()
         }
 
-        editFab.setOnClickListener {
-            viewModel.onEditItemClick()
-        }
-
-        deleteFab.setOnClickListener {
-            viewModel.onDeleteItemClick(jwtToken ?: "")
-        }
-
         authViewModel.authResult.observe(viewLifecycleOwner) { authResult ->
             jwtToken = authResult?.jwtToken
         }
@@ -99,8 +87,6 @@ class RoomListFragment : Fragment() {
 
         viewModel.selectedItemCount.observe(viewLifecycleOwner) { count ->
             addFab.visibility = if (count == 0) View.VISIBLE else View.GONE
-            editFab.visibility = if (count == 1) View.VISIBLE else View.GONE
-            deleteFab.visibility = if (count > 0) View.VISIBLE else View.GONE
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->

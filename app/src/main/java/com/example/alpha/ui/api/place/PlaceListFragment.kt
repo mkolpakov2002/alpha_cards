@@ -40,8 +40,6 @@ class PlaceListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter
-    private lateinit var editFab: FloatingActionButton
-    private lateinit var deleteFab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
     private lateinit var errorTextView: TextView
     private var jwtToken: String? = null
@@ -59,8 +57,7 @@ class PlaceListFragment : Fragment() {
         roomId = arguments?.getInt("roomId", -1000)
 
         recyclerView = view.findViewById(R.id.recyclerView)
-        editFab = view.findViewById(R.id.editFab)
-        deleteFab = view.findViewById(R.id.deleteFab)
+
         progressBar = view.findViewById(R.id.progressBar)
         errorTextView = view.findViewById(R.id.errorTextView)
 
@@ -73,14 +70,6 @@ class PlaceListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
-        editFab.setOnClickListener {
-            viewModel.onEditItemClick()
-        }
-
-        deleteFab.setOnClickListener {
-            viewModel.onDeleteItemClick(jwtToken ?: "")
-        }
-
         authViewModel.authResult.observe(viewLifecycleOwner) { authResult ->
             jwtToken = authResult?.jwtToken
         }
@@ -90,11 +79,6 @@ class PlaceListFragment : Fragment() {
             if (items.isEmpty()) {
                 Toast.makeText(requireContext(),"Здесь пока пусто!", Toast.LENGTH_SHORT).show()
             }
-        }
-
-        viewModel.selectedItemCount.observe(viewLifecycleOwner) { count ->
-            editFab.visibility = if (count == 1) View.VISIBLE else View.GONE
-            deleteFab.visibility = if (count > 0) View.VISIBLE else View.GONE
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->

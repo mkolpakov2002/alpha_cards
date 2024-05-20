@@ -36,8 +36,6 @@ class HardwareListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter<Hardware>
-    private lateinit var editFab: FloatingActionButton
-    private lateinit var deleteFab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
     private lateinit var errorTextView: TextView
     private var jwtToken: String? = null
@@ -49,8 +47,6 @@ class HardwareListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
 
         recyclerView = view.findViewById(R.id.recyclerView)
-        editFab = view.findViewById(R.id.editFab)
-        deleteFab = view.findViewById(R.id.deleteFab)
         progressBar = view.findViewById(R.id.progressBar)
         errorTextView = view.findViewById(R.id.errorTextView)
 
@@ -63,15 +59,6 @@ class HardwareListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL)
 
-
-        editFab.setOnClickListener {
-            viewModel.onEditItemClick()
-        }
-
-        deleteFab.setOnClickListener {
-            viewModel.onDeleteItemClick(jwtToken ?: "")
-        }
-
         authViewModel.authResult.observe(viewLifecycleOwner) { authResult ->
             jwtToken = authResult?.jwtToken
         }
@@ -81,11 +68,6 @@ class HardwareListFragment : Fragment() {
                 Toast.makeText(requireContext(),"Здесь пока пусто!", Toast.LENGTH_SHORT).show()
             }
             adapter.submitList(items)
-        }
-
-        viewModel.selectedItemCount.observe(viewLifecycleOwner) { count ->
-            editFab.visibility = if (count == 1) View.VISIBLE else View.GONE
-            deleteFab.visibility = if (count > 0) View.VISIBLE else View.GONE
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
